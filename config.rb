@@ -58,7 +58,7 @@ ignore '.idea/*'
 configure :build do
   activate :minify_css
   activate :minify_javascript
-  # activate :relative_assets
+  activate :relative_assets
   # activate :cache_buster
   activate :asset_hash
 
