@@ -1,0 +1,38 @@
+---
+layout: nil
+title: Prashant's Blog
+---
+%html
+  %head
+    %link{href: '/assets/page-css/home.css', rel: 'stylesheet', type: 'text/css'}
+    %link{href: '/assets/stylesheets/icomoon.css', rel: 'stylesheet', type: 'text/css'}
+  %body
+    %div.content
+      %p
+        Hi, I am a determined Software Engg. Currently working for <a href="http://trantorinc.com" target="_blank">TrantorInc</a>, Chandigarh, India,
+        where I  am utilizing my potential to excel my skills to contribute to my firm.
+      %p
+        My work involves developing web applications using Ruby on Rails in various business domains. I have worked with Mysql, sqlite, Postgresql. Nosql databases
+        like MongoDb. I have worked also worked with javascripts frameworks like angular.js, used twitter bootstrap for responsive web design.
+        Used ruby templating engines like haml, erb, markdown. For background jobs i prefer resque.
+      %p
+        Major projects i worked on:
+        %ul
+          %li
+            %a{href: 'http://inxero.com', target: '_blank'} InXero
+          %li
+            %a{href: 'http://traveltriangle.com', target: '_blank'} Travel Triangle
+          %li
+            %a{href: 'http://dealdey.com', target: '_blank'}  DealDey
+
+      %p
+        My blog:
+        %a{href: '/blog', target: '_blank', class: 'blog-link'} prashantsahni.in/blog
+
+      %p.social-links
+        = link_to  'https://www.linkedin.com/profile/view?id=38142374', class: 'social-link' , target: '_blank' do
+          %span.datalinkedin2icon
+        = link_to 'https://github.com/psahni', class: 'social-link' , target: '_blank' do
+          %span.datagithub4icon
+        = link_to  'https://twitter.com/_prashantsahni', class: 'social-link', target: '_blank' do
+          %span.datatwitter2icon
