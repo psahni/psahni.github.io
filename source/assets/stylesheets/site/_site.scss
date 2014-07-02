@@ -1,0 +1,101 @@
+// ------------------------------------------------------------
+// Layout
+// ------------------------------------------------------------
+.site-header {
+	@include clearfix;
+	background-color: $white-smoke;
+	padding:1em;
+}
+.site-main{}
+.site-footer{}
+
+
+
+// ------------------------------------------------------------
+// Site Nav
+// ------------------------------------------------------------
+
+.site-nav {
+	@include clearfix;
+
+	.navbar-brand {
+		display: block;
+
+		i {
+			font-size:3em;
+			margin-right:1em;
+			display: block;
+		}
+		@include media($medium-screen) {
+			float: left;
+		}
+	}
+
+	.site-logo {
+		display: block;
+		border-radius: 100%;
+		margin: auto;
+	}
+
+	.nav-links {
+		height: 0;
+		overflow: hidden;
+
+		@include media($medium-screen) {
+			height: auto;
+		}
+
+		a {
+			@include trailing-hovers;
+			@include media($medium-screen) {
+				display: block;
+				float: left;
+				line-height: 0;
+				height: 0;
+				padding: .6em 1.5em;
+			}
+		}
+
+		.nav-right {
+			@include media($medium-screen) {
+				float: right;
+			}
+		}
+	}
+}
+
+// ------------------------------------------------------------
+// Mobile Menu
+// ------------------------------------------------------------
+
+.mobile-menu {
+	position: absolute;
+	top: 1.1em;
+	right: 1.1em;
+	z-index: 2;
+
+	@include media($medium-screen) {
+		display: none;
+	}
+
+	.icon {
+		display: block;
+		font-size: 2em;
+		cursor: pointer;
+	}
+}
+
+// Menu active
+.menu-active {
+
+	.nav-links {
+		height: auto;
+		overflow: auto;
+
+		a {
+			display: block;
+			padding: .5em;
+			text-align:center;
+		}
+	}
+}
