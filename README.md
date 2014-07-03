@@ -1,3 +1,27 @@
+# Prashant Sahni Blog #
+
+## Getting Setup ##
+
+```bash
+$ bundle install
+```
+
+## Getting Up & Running ##
+
+```bash
+$ bundle exec middleman
+
+# or run the Rake task
+
+$ rake preview
+```
+
+
+
+## Create an article
+bundle exec middleman article "Launching my blog"
+
+
 # Middleman Loaded
 
 Middleman loaded with good stuff and configured to kill
