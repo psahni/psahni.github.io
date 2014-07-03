@@ -1,0 +1,116 @@
+!!!5
+%html
+  %head
+    %title
+      - if current_page.title
+        = current_page.title
+      - else
+        Prashant Sahni's Blog
+
+    = stylesheet_link_tag :all
+    = javascript_include_tag :all
+
+    %meta{'http-equiv' => 'CACHE-CONTROL', content: 'NO-CACHE'}
+    %meta{content: 'Prashant Sahni is a Ruby on Rails developer bases in India', namer: 'description'}
+    %meta{content: 'ruby on rails, rails, ruby, ruby on rails training, ruby application development, ruby on rails application development, ember application development, ember.js application development, software application development, web, web application development, mobile, mobile application development, ios, ios application development, iphone, iphone application development, android, android application development, postgres, startups, enterprise, Boston, MA, Massachusetts, for hire', name: 'keywords'}
+    %meta{content: 'web development, mobile development, startups, enterprise, ruby on rails, rails, ruby, ruby on rails training, Boston, for hire', name: 'keywords'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0'}
+    %meta{charset: 'utf-8'}
+    - if current_page
+      %meta{content: "prashantsahni.in - #{current_page.summary}", name: 'description'}
+      - if current_page.data.googleplus
+        %link{href: "https://plus.google.com/#{current_page.data.googleplus}", rel: 'author' }
+      - if current_page.twitter
+        %meta{name: 'twitter:creator', content: current_page.twitter}
+        %meta{name: 'twitter:card', content: 'summary'}
+        %meta{name: 'twitter:site', content: '@_prashantsahni'}
+        %meta{name: 'twitter:url', content: "http://reefpoints.dockyard.com/#{current_path}"}
+        %meta{name: 'twitter:title', content: current_page.title}
+        %meta{name: 'twitter:description', content: current_page.summary}
+    - else
+      %meta{content: 'Prashant Sahni is a Ruby on Rails developer bases in India', name: 'description'}
+
+    %link{href: '//cloud.typography.com/6496052/702882/css/fonts.css', rel: 'stylesheet', type: 'text/css'}
+    %link{href: 'http://dockyard.com/humans.txt', rel: 'author'}
+    %link{href: '/favicon.png', rel: 'shortcut icon', type: 'image/x-icon'}
+    %link{href: '/favicon.png', rel: 'icon', type: 'image/x-icon'}
+    %link{rel: 'apple-touch-icon', :href => '/apple-touch-icon.png'}
+    %link{rel: 'apple-touch-icon-precomposed', :href => '/apple-touch-icon-precomposed.png'}
+
+    :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30027618-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    :plain
+      <!--
+                                                   ..
+                                                 .O.
+                                             .:OO.
+                                            :OOO.
+                                          :OOO:.
+                               ...      :OOOO:
+                         ..ZOOOOOOOOO..OZ.O.
+                         OOOOOOOOOOOOOOOOI
+                        OOOOOOOOOOOOOOOOI,
+                       OOOOOOOO. .OOOOOOOO:
+                       OOOOOOOO   OOOOOOOOO:
+                      OOOOOOOOOOOOOOOOOOOOO.
+                      OOOOOOOOOOOOOOOOOOOOO:
+                     .OOOOOOOOOOOOOOOOOOOOO:
+                     .OOOOOOOOOOOOOOOOOOOOO.
+                      OOOOOOOOOOOOOOOOOOOOO
+                      OOOOOO?:   .OOOOOOOOO
+                     .OOOOO      OOOOOOOOOO
+      ,OO ZO,        OOOOO,     OOOOOOOOOO+
+       OOOOO.        OOOOO     OOOOOOOOOOO+
+        OOO?        OOOOO     .OOOOOOOOOOO:
+         OOO,      OOOOO.    .OOOOOOOOOOOO
+          OOOOOOOOOOOOO.    .OOOOOOOOOOOO.
+           OOOOOOOOOOOO.  .OOOOOOOOOOOOO.
+            8OOOOOOOOOOOOOOOOOOOOOOOODO:
+               :OOOOOOOOOOOOOOOOOOOO::
+
+      -->
+
+  %body{class: page_classes}
+
+    %header
+      = partial 'header'
+    .push--header
+
+    .l-wrap--blog
+      = link_to '/' do
+        %strong.logo--blog Prashant Sahni
+
+      = link_to '/blog' do
+        %strong.logo--blog__tagline Blog
+
+      %nav.blog-nav
+        = link_to 'Posts', '/blog', class: "blog-nav__item #{active_state_for('index')}", id: 'post-link'
+        = link_to 'Categories', '/categories.html', class: "blog-nav__item #{active_state_for('categories')}" , id: 'category-link'
+        = link_to 'Authors', '/authors.html', class: "blog-nav__item #{active_state_for('authors')}", id: 'author-link'
+
+    = yield
+
+    .push--footer
+    %footer
+      = partial 'footer'
+
+    :javascript
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'psahni'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function () {
+          var s = document.createElement('script'); s.async = true;
+          s.type = 'text/javascript';
+          s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+          (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());

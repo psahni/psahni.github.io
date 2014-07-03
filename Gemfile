@@ -12,6 +12,7 @@ gem 'middleman-pry'
 gem 'bitters'
 gem 'middleman-syntax'
 gem "middleman-deploy"
+gem "middleman-blog"
 
 gem 'redcarpet'
 gem 'coderay', :github => 'dgeb/coderay', ref: '1362fd4af63331aed51ce9907ad7295cea228874'

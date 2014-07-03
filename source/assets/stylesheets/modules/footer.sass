@@ -1,0 +1,70 @@
+// File copied over from dockyard.com
+
+@import load
+
+.l-footer-group
+  @media (max-width: 880px)
+    &:not(:last-child)
+      margin-bottom: 5em
+  @media (min-width: 880px)
+    width: 30%
+    float: left
+    &:not(:last-child)
+      margin-right: 5%
+
+footer
+  padding:
+    top: 90px
+    bottom: 90px
+  @include has-border(top)
+  line-height: 1.5
+  @media (min-width: 880px)
+    overflow: auto
+
+.footer-group__title
+  margin-bottom: 1.5em
+  font-size: 18px
+
+.footer-desc
+  color: $gray
+
+.footer__event--wgr, .footer__event--openhack, .footer__event--ember, .footer__event--ux
+  padding:
+    top: 1.25em
+    bottom: 1.25em
+  background:
+    image: image-url('events.jpg')
+    size: 50px
+    repeat: no-repeat
+  text-indent: 4em
+  @extend %strong
+  @include hover($blue)
+  &:nth-child(n+3)
+    @include has-border(top)
+
+.footer__event--wgr
+  margin-top: -20px
+
+.footer__event--ember
+  background-position: left -64px
+
+.footer__event--ux
+  background-position: left -128px
+
+.footer__event--openhack
+  background-position: left -192px
+
+.footer__post
+  margin-bottom: 1.5em
+  display: block
+  @include hover($blue)
+
+.footer__address
+  margin:
+    top: 1.5em
+    bottom: 1.5em
+  padding-top: 1.5em
+  display: block
+  @include has-border(top)
+  color: $gray
+
