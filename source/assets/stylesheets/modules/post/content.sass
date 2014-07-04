@@ -1,0 +1,51 @@
+@import load
+
+.post__content
+  margin-bottom: 84px
+  line-height: 1.8
+
+  h1, h2, h3, h4, h5, h6
+    margin:
+      top: 40px
+      bottom: 10px
+    font-family: 'NiveauGroteskBold', sans-serif
+    line-height: 1.8
+
+  h1, h2
+    font-size: 24px
+
+  h3, h4, h5, h6
+    font-size: 19px
+    text-transform: uppercase
+    color: lighten($gray, 5%)
+
+  h1 + h3, h2 + h3, h1 + h4, h2 + h4, h1 + h5, h2 + h5, h1 + h6, h2 + h6
+    margin-top: 0
+
+  p, li, em
+    font-size: 20px
+
+  p
+    margin-bottom: 18px
+
+  a
+    color: $blue
+    @include hover(lighten($blue, 10%))
+
+  ul, ol
+    margin-bottom: 18px
+
+  ul li
+    margin-left: 1em
+    list-style-type: disc
+    li
+      list-style-type: circle
+
+  ol li
+    margin-left: 1.25em
+    list-style-type: decimal
+
+  img
+    margin: 0 auto 2em
+    display: block
+    width: 100%

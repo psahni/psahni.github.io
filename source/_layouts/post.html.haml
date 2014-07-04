@@ -1,0 +1,59 @@
+- wrap_layout :layout do
+
+  .l-wrap--blog__post
+    %h1.post__title= current_page.title
+
+    - link_to current_page.author, author_path(current_page.author), class: 'post__author'
+    %time.post__date= ordinal_date current_page.date
+
+    .post__content
+      = yield
+
+    .post__share
+      %a.twitter-share-button{href: 'https://twitter.com/share', data: { url: "http://prashantsahni.in/#{current_page.url}", via: '_prashantsahni' }} Tweet
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='//platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');
+      .g-plusone{data: {size: 'medium', width: '100', href: '#'}}
+      :javascript
+        (function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
+      %span.post__share--github If you see an issue, please send a <a href='https://github.com/dockyard/reefpoints/blob/master/source/posts/', class='text-link post__issue', target: '_blank'>pull request</a> to contribute.
+
+    .related-posts-wrap
+      - if blog.articles.select { |article| article.author == current_page.author }.size > 1
+        .post__avatar-wrap
+          %img{src: "/assets/images/team/#{current_page.author.parameterize}.jpg", class: 'post__avatar'}
+          %h5.post__avatar__name= current_page.author
+        .related-posts
+          %h3.related-posts__header.headline--sub= "Other posts by #{current_page.author.split[0...1].join(' ')}"
+          - blog.articles.select { |article| article.author == current_page.author && article.path != current_page.path }[0..1].each do |post|
+            = link_to post.url, class: 'related-post' do
+              %h2.related-post__title= post.title
+              %p= ordinal_date post.date
+          -#= link_to "See all #{pluralize(blog.articles.select { |article| article.author == current_page.author }.size, 'post')} by #{current_page.author.split[0...1].join(' ')}", author_path(current_page.author), class: 'related-posts-link text-link'
+          = link_to "See all #{pluralize(blog.articles.select { |article| article.author == current_page.author }.size, 'post')} by #{current_page.author.split[0...1].join(' ')}", '/blog', class: 'related-posts-link text-link'
+      - else
+        .post__avatar-wrap-is-centered
+          %img{src: "/assets/images/team/#{current_page.author.parameterize}.jpg", class: 'post__avatar'}
+          %h5.post__avatar__name= current_page.author
+
+
+    %p.post__tags= tag_links(current_page.tags)
+
+    - if current_page.comments
+      #disqus_thread
+      :javascript
+        var disqus_shortname = 'psahni';
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      %noscript
+        Please enable JavaScript to view the <a href='http://disqus.com/?ref_noscript'>comments powered by Disqus</a>.</noscript>
+
+    :javascript
+      var path = window.location.pathname.split('/').reverse();
+      var postname = path[0].split('.');
+      var change = postname[0] + '.md';
+      var newpath = 'https://github.com/psahni/psahni.github.com/blob/master/source/posts/' + path[3] + '-' + path[2] + '-' + path[1] + '-' + change
+      $('.post__issue').attr('href', newpath);

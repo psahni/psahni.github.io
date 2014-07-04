@@ -1,0 +1,41 @@
+.l-wrap
+  .l-footer-group
+    -# %h3.footer-group__title EVENTS
+    - link_to 'Wicked Good Ruby Conf', 'http://wickedgoodruby.com/', class: 'footer__event--wgr', target: '_blank'
+    - link_to 'Boston Ember.js Meetup', 'http://www.meetup.com/Boston-Ember-js/', class: 'footer__event--ember', target: '_blank'
+    - link_to 'UX Boston Meetup', 'http://www.meetup.com/uxboston/', class: 'footer__event--ux', target: '_blank'
+    - link_to 'OpenHack Boston', 'http://openhack.github.io/boston/', class: 'footer__event--openhack', target: '_blank'
+
+  .l-footer-group
+    = link_to '/' do
+      %h3.footer-group__title BLOG
+    - blog.articles[0..2].each do |article|
+      = link_to article.url, class: 'footer__post' do
+        %strong= article.title
+        %h6.footer-desc= article.summary
+
+  .l-footer-group
+    - link_to 'http://dockyard.com/hire-us' do
+      -#%h3.footer-group__title CONTACT
+    -#%h6.footer-desc DockYard HQ is located in Boston. Stop in sometime and meet our team!
+
+    -# link_to 'http://goo.gl/maps/zBGfn', class: 'footer__address', target: '_blank' do
+      -#%h6
+        DockYard Inc.
+        %br
+        101 Tremont Street
+        %br
+        Suite 200
+        %br
+        Boston, MA 02108
+
+    -# link_to 'Get in touch.', 'http://dockyard.com/hire-us', class: 'text-link'
+    .social-links--footer
+      = link_to  'https://www.linkedin.com/profile/view?id=38142374', class: 'social-link' , target: '_blank' do
+        %span.datalinkedin2icon
+      = link_to 'https://github.com/psahni', class: 'social-link' , target: '_blank' do
+        %span.datagithub4icon
+      = link_to  'https://twitter.com/_prashantsahni', class: 'social-link', target: '_blank' do
+        %span.datatwitter2icon
+      = link_to '/atom.xml', class: 'social-link', target: '_blank' do
+        %span.datarssicon
