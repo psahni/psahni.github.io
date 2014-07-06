@@ -59,7 +59,7 @@ What it does it simply creates model, collection, router, view and template path
 It requires the needed dependencies in application.js, see 40th line of the installation code.
 
 <strong>Directory structure of app folder </strong>
-<img src="/images/backbone_app1.png" alt="" /><br />
+<img src="/assets/images/backbone_app1.png" alt="" /><br />
 Dependencies is a extra directory that i created.
 
   Hope you have basic understanding of Backbone.js.

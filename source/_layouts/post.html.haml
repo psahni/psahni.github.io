@@ -16,7 +16,7 @@
       .g-plusone{data: {size: 'medium', width: '100', href: '#'}}
       :javascript
         (function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
-      %span.post__share--github If you see an issue, please send a <a href='https://github.com/dockyard/reefpoints/blob/master/source/posts/', class='text-link post__issue', target: '_blank'>pull request</a> to contribute.
+      %span.post__share--github If you see an issue, please send a <a href='https://github.com/psahni/psahni.github.io/tree/source/source/blog/posts', class='text-link post__issue', target: '_blank'>pull request</a> to contribute.
 
     .related-posts-wrap
       - if blog.articles.select { |article| article.author == current_page.author }.size > 1
@@ -55,5 +55,5 @@
       var path = window.location.pathname.split('/').reverse();
       var postname = path[0].split('.');
       var change = postname[0] + '.md';
-      var newpath = 'https://github.com/psahni/psahni.github.com/blob/master/source/posts/' + path[3] + '-' + path[2] + '-' + path[1] + '-' + change
+      var newpath = 'https://github.com/psahni/psahni.github.io/tree/source/source/blog/posts/' + path[3] + '-' + path[2] + '-' + path[1] + '-' + change
       $('.post__issue').attr('href', newpath);
