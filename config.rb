@@ -9,7 +9,7 @@ require 'middleman-blog/tag_pages'
 require 'active_support/inflector'
 require 'lib/extensions/custom_urls.rb'
 
-p "==="
+p "Loading"
 p Dir['./lib/**/*']
 Dir['./lib/**/*.rb'].each { |f| require f }
 
@@ -26,9 +26,9 @@ activate :syntax # code highlighting
 activate :blog do |blog|
   blog.permalink = "blog/:year/:month/:day/:title.html"
   blog.sources = "blog/posts/:year-:month-:day-:title.html"
-#  blog.paginate = true
-#  blog.tag_template = 'category.html'
-#  blog.taglink = 'categories/:tag.html'
+  blog.paginate = true
+  blog.tag_template = 'category.html'
+  blog.taglink = 'categories/:tag.html'
   blog.author_template = 'author.html'
   blog.authorlink = 'authors/:author.html'
 end
