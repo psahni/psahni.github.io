@@ -17,20 +17,59 @@ in integration testing. It is essentially about testing rendering of pages, elem
 Here is an high level case -
 
 ```javascript
-  describe("User Registration", function() {
-    
-    beforeEach(function(){
-      //............
-    });
+describe("User Registration", function() {
 
-  });
+beforeEach(function(){
+	browser().navigateTo('/signup');
+});
+
+it("ensure user can signup for the application", function(){
+	var first_name = element(by.id('FirstName'));
+	first_name.sendKeys("Mark");
+
+	var last_name = element(by.id('LastName'));
+	last_name.sendKeys('Edwards');
+
+	var email = element(by.id('Email'));
+	email.sendKeys('mark@nulightsolutions.com');
+
+	var password = element(by.id('password'));
+	var confirm_password = element(by.id('confirm-password'));
+	password.sendKeys('passwOrd');
+	confirm_password.sendKeys('passwOrd');
+
+	var button = element(by.id('signup-button'));
+	button.click();
+
+	expect(browser.getCurrentUrl()).toMatch('someUrlString');
+});
+
+});
 ```
 
 The framework that is used for Angular JS integration testing is Protractor. It a wrapper over Webdriver.js.
 <a href='https://github.com/angular/protractor' target='_blank'><img src='/assets/images/protractor.png'></a>
 
+Protractor is an end to end testing framework for AngularJS applications. It uses webdriver to control browser activities, it runs on the top of Selenium because it is based on webdriver protocols. Protractor uses Jasmine for its test syntax. So its a nice wrapper over selenium and jasmine.
+
 I am here going to explain you a scenario where you need to test an application which is calling an external api.
 The application is consuming api from the api provider.
 
 When we test our app, we don't want that test environment should send request to our real server. What we actually want is
-to mock the service which will respond with out any processing or unintelligently.
+to mock the service which will respond with unintelligently or out any processing.
+
+We create dump version of the service which simply returns the desired response.
+
+
+<h2>$httpBackend</h2>
+As per angular js documentation this is Fake HTTP backend implementation suitable for end-to-end testing or backend-less development of applications that use the $http service.
+This service is used to intercept the request.
+
+There are 2 different implementations of $httpBackend for faking/mocking HTTP requests: one for unit testing, provided by the ngMock service, and one for E2E testing, provided by ngMockE2E. To set up an E2E test, we should have a module that depends on ngMockE2E and the application module.
+
+<strong>Using $httpBackend to mock HTTP requests</strong>
+The following example shows how to mock a login request
+
+http://blog.xebia.com/2014/03/08/angularjs-e2e-testing-using-ngmocke2e/
+https://docs.angularjs.org/api/ngMock/service/$httpBackend
+http://andyshora.com/unit-testing-best-practices-angularjs.html
