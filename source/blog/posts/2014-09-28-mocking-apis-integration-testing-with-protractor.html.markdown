@@ -67,9 +67,20 @@ This service is used to intercept the request.
 
 There are 2 different implementations of $httpBackend for faking/mocking HTTP requests: one for unit testing, provided by the ngMock service, and one for E2E testing, provided by ngMockE2E. To set up an E2E test, we should have a module that depends on ngMockE2E and the application module.
 
-<strong>Using $httpBackend to mock HTTP requests</strong>
-The following example shows how to mock a login request
+<h2>Using $httpBackend to mock HTTP requests</h2>
+The following example shows how to mock a login request.
+Suppose ngApp is 'userManagement'. Lets create a mock version of the module 'userManagementMock'.
 
-http://blog.xebia.com/2014/03/08/angularjs-e2e-testing-using-ngmocke2e/
-https://docs.angularjs.org/api/ngMock/service/$httpBackend
-http://andyshora.com/unit-testing-best-practices-angularjs.html
+```javascript
+var expected_response = {'id' : 'abcd1234'};
+angular.module('userManagementMock', ['userManagement', 'ngMockE2E'])
+   .run(function ($httpBackend) {
+      $httpBackend.whenPOST('https://api.example.com/users/login').respond(function(){
+       return [200, expected_response];
+      });
+    $httpBackend.whenGET(/.*/).passThrough();
+ });
+```
+
+$httpBackend.whenGET(/.*/).passThrough() - It just passes all the requests that we are not mocking. We should not be mocking
+requests which are loading templates, scripts from the server.
