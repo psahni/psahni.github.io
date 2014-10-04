@@ -67,20 +67,62 @@ This service is used to intercept the request.
 
 There are 2 different implementations of $httpBackend for faking/mocking HTTP requests: one for unit testing, provided by the ngMock service, and one for E2E testing, provided by ngMockE2E. To set up an E2E test, we should have a module that depends on ngMockE2E and the application module.
 
+Note: For mocking to work, we have install the component - <a href='https://github.com/angular/bower-angular-mocks' target='_blank'>angular-mocks</a>
+
+```
+# Installation (via bower)
+bower install angular-mocks
+
+# And include this script in your angularjs app
+<script type="text/javascript" src="bower_components/angular-mocks/angular-mocks.js"></script>
+```
 <h2>Using $httpBackend to mock HTTP requests</h2>
-The following example shows how to mock a login request.
+The following example shows how to mock a signup request.
 Suppose ngApp is 'userManagement'. Lets create a mock version of the module 'userManagementMock'.
 
 ```javascript
 var expected_response = {'id' : 'abcd1234'};
 angular.module('userManagementMock', ['userManagement', 'ngMockE2E'])
    .run(function ($httpBackend) {
-      $httpBackend.whenPOST('https://api.example.com/users/login').respond(function(){
+      $httpBackend.whenPOST('https://api.example.com/users/signup').respond(function(){
        return [200, expected_response];
       });
     $httpBackend.whenGET(/.*/).passThrough();
  });
 ```
 
-$httpBackend.whenGET(/.*/).passThrough() - It just passes all the requests that we are not mocking. We should not be mocking
-requests which are loading templates, scripts from the server.
+$httpBackend.whenGET(/.*/).passThrough() - It just passes all the requests that we are not mocking. The request just goes through its regular channel. We should not be mocking requests which are loading templates, scripts from the server.
+
+In order to make all the pieces work together nicely, i created a separate file - mocks.js. Inside that i wrote -
+
+```javascript
+exports.signup_request = function(){
+	var expected_response = {'id' : 'abcd1234'};
+	angular.module('userManagementMock', ['userManagement', 'ngMockE2E'])
+		.run(function ($httpBackend) {
+			$httpBackend.whenPOST('https://api.example.com/users/signup').respond(function(){
+				return [200, expected_response];
+			});
+			$httpBackend.whenGET(/.*/).passThrough();
+	});
+}
+```
+Then inside test file -
+
+```javascript
+var mockModule;
+beforeEach(function(){
+	mockModule = require('./mock');
+});
+```
+
+And
+
+```javascript
+it("ensure user can signup for the application", function(){
+	browser.addMockModule('httpBackendMock', mockModule.signup_request);
+	//...
+	//..code to submit sign up request
+	//..
+});
+```
