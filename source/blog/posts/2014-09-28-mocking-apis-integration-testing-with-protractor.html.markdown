@@ -126,3 +126,8 @@ it("ensure user can signup for the application", function(){
 	//..
 });
 ```
+
+browser.addMockModule registers the module. This overrides the modules already loaded with the same name.
+
+
+In this way we can mock the end points or external requests that we want to mock. This approach is very elegant and clean.
