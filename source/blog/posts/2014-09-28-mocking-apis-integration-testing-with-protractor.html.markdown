@@ -17,20 +17,117 @@ in integration testing. It is essentially about testing rendering of pages, elem
 Here is an high level case -
 
 ```javascript
-  describe("User Registration", function() {
-    
-    beforeEach(function(){
-      //............
-    });
+describe("User Registration", function() {
 
-  });
+beforeEach(function(){
+	browser().navigateTo('/signup');
+});
+
+it("ensure user can signup for the application", function(){
+	var first_name = element(by.id('FirstName'));
+	first_name.sendKeys("Mark");
+
+	var last_name = element(by.id('LastName'));
+	last_name.sendKeys('Edwards');
+
+	var email = element(by.id('Email'));
+	email.sendKeys('mark@nulightsolutions.com');
+
+	var password = element(by.id('password'));
+	var confirm_password = element(by.id('confirm-password'));
+	password.sendKeys('passwOrd');
+	confirm_password.sendKeys('passwOrd');
+
+	var button = element(by.id('signup-button'));
+	button.click();
+
+	expect(browser.getCurrentUrl()).toMatch('someUrlString');
+});
+
+});
 ```
 
 The framework that is used for Angular JS integration testing is Protractor. It a wrapper over Webdriver.js.
 <a href='https://github.com/angular/protractor' target='_blank'><img src='/assets/images/protractor.png'></a>
 
+Protractor is an end to end testing framework for AngularJS applications. It uses webdriver to control browser activities, it runs on the top of Selenium because it is based on webdriver protocols. Protractor uses Jasmine for its test syntax. So its a nice wrapper over selenium and jasmine.
+
 I am here going to explain you a scenario where you need to test an application which is calling an external api.
 The application is consuming api from the api provider.
 
 When we test our app, we don't want that test environment should send request to our real server. What we actually want is
-to mock the service which will respond with out any processing or unintelligently.
+to mock the service which will respond with unintelligently or out any processing.
+
+We create dump version of the service which simply returns the desired response.
+
+
+<h2>$httpBackend</h2>
+As per angular js documentation this is Fake HTTP backend implementation suitable for end-to-end testing or backend-less development of applications that use the $http service.
+This service is used to intercept the request.
+
+There are 2 different implementations of $httpBackend for faking/mocking HTTP requests: one for unit testing, provided by the ngMock service, and one for E2E testing, provided by ngMockE2E. To set up an E2E test, we should have a module that depends on ngMockE2E and the application module.
+
+Note: For mocking to work, we have install the component - <a href='https://github.com/angular/bower-angular-mocks' target='_blank'>angular-mocks</a>
+
+```
+# Installation (via bower)
+bower install angular-mocks
+
+# And include this script in your angularjs app
+<script type="text/javascript" src="bower_components/angular-mocks/angular-mocks.js"></script>
+```
+<h2>Using $httpBackend to mock HTTP requests</h2>
+The following example shows how to mock a signup request.
+Suppose ngApp is 'userManagement'. Lets create a mock version of the module 'userManagementMock'.
+
+```javascript
+var expected_response = {'id' : 'abcd1234'};
+angular.module('userManagementMock', ['userManagement', 'ngMockE2E'])
+   .run(function ($httpBackend) {
+      $httpBackend.whenPOST('https://api.example.com/users/signup').respond(function(){
+       return [200, expected_response];
+      });
+    $httpBackend.whenGET(/.*/).passThrough();
+ });
+```
+
+$httpBackend.whenGET(/.*/).passThrough() - It just passes all the requests that we are not mocking. The request just goes through its regular channel. We should not be mocking requests which are loading templates, scripts from the server.
+
+In order to make all the pieces work together nicely, i created a separate file - mocks.js. Inside that i wrote -
+
+```javascript
+exports.signup_request = function(){
+	var expected_response = {'id' : 'abcd1234'};
+	angular.module('userManagementMock', ['userManagement', 'ngMockE2E'])
+		.run(function ($httpBackend) {
+			$httpBackend.whenPOST('https://api.example.com/users/signup').respond(function(){
+				return [200, expected_response];
+			});
+			$httpBackend.whenGET(/.*/).passThrough();
+	});
+}
+```
+Then inside test file -
+
+```javascript
+var mockModule;
+beforeEach(function(){
+	mockModule = require('./mock');
+});
+```
+
+And
+
+```javascript
+it("ensure user can signup for the application", function(){
+	browser.addMockModule('httpBackendMock', mockModule.signup_request);
+	//...
+	//..code to submit sign up request
+	//..
+});
+```
+
+browser.addMockModule registers the module. This overrides the modules already loaded with the same name.
+
+
+In this way we can mock the end points or external requests that we want to mock. This approach is very elegant and clean.
