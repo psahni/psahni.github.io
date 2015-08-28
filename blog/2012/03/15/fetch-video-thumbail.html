@@ -1,0 +1,332 @@
+<!DOCTYPE html><html><head><title>Thumbnail image fetcher for youtube and vimeo</title><link href="../../../../assets/stylesheets/all-211194c3.css" media="screen" rel="stylesheet" type="text/css" /><script src="../../../../assets/javascripts/all-b36f1b0a.js" type="text/javascript"></script><meta content='NO-CACHE' http-equiv='CACHE-CONTROL'><meta content='Prashant Sahni is a Ruby on Rails developer bases in India' namer='description'><meta content='ruby on rails, rails, ruby, ruby on rails training, ruby application development, ruby on rails application development, ember application development, ember.js application development, software application development, web, web application development, mobile, mobile application development, ios, ios application development, iphone, iphone application development, android, android application development, postgres, startups, enterprise, Boston, MA, Massachusetts, for hire' name='keywords'><meta content='web development, mobile development, startups, enterprise, ruby on rails, rails, ruby, ruby on rails training, Boston, for hire' name='keywords'><meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'><meta charset='utf-8'><meta content='prashantsahni.in - ' name='description'><meta content='_prashantsahni' name='twitter:creator'><meta content='summary' name='twitter:card'><meta content='@_prashantsahni' name='twitter:site'><meta content='http://reefpoints.dockyard.com/blog/2012/03/15/fetch-video-thumbail.html' name='twitter:url'><meta content='Thumbnail image fetcher for youtube and vimeo' name='twitter:title'><meta name='twitter:description'><link href='//cloud.typography.com/6496052/702882/css/fonts.css' rel='stylesheet' type='text/css'><link href='http://dockyard.com/humans.txt' rel='author'><link href='/favicon.png' rel='shortcut icon' type='image/x-icon'><link href='/favicon.png' rel='icon' type='image/x-icon'><link href='/apple-touch-icon.png' rel='apple-touch-icon'><link href='/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'><script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30027618-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<!--
+                                             ..
+                                           .O.
+                                       .:OO.
+                                      :OOO.
+                                    :OOO:.
+                         ...      :OOOO:
+                   ..ZOOOOOOOOO..OZ.O.
+                   OOOOOOOOOOOOOOOOI
+                  OOOOOOOOOOOOOOOOI,
+                 OOOOOOOO. .OOOOOOOO:
+                 OOOOOOOO   OOOOOOOOO:
+                OOOOOOOOOOOOOOOOOOOOO.
+                OOOOOOOOOOOOOOOOOOOOO:
+               .OOOOOOOOOOOOOOOOOOOOO:
+               .OOOOOOOOOOOOOOOOOOOOO.
+                OOOOOOOOOOOOOOOOOOOOO
+                OOOOOO?:   .OOOOOOOOO
+               .OOOOO      OOOOOOOOOO
+,OO ZO,        OOOOO,     OOOOOOOOOO+
+ OOOOO.        OOOOO     OOOOOOOOOOO+
+  OOO?        OOOOO     .OOOOOOOOOOO:
+   OOO,      OOOOO.    .OOOOOOOOOOOO
+    OOOOOOOOOOOOO.    .OOOOOOOOOOOO.
+     OOOOOOOOOOOO.  .OOOOOOOOOOOOO.
+      8OOOOOOOOOOOOOOOOOOOOOOOODO:
+         :OOOOOOOOOOOOOOOOOOOO::
+
+--></head><body class='blog blog_2012 blog_2012_03 blog_2012_03_15 blog_2012_03_15_fetch-video-thumbail'><header><div class='extended-nav-wrap'><div class='l-wrap--wide'><nav class='extended-nav'><a class="extended-nav--logo" data-icon="⌂" href="http://dockyard.com/"><span class='is-hidden'>Home</span></a>
+<a class="extended-nav--close" data-icon="X" href="#"><span class='is-hidden'>Close</span></a><div class='extended-nav__items'><div class='extended-nav__items--mobile'><a class="extended-nav__item--work extended-nav__item" href="#">Work</a><nav class='work-nav--mobile'><a href="http://dockyard.com/work/credit-card-reviews" class="work-nav-item"><strong class='work-nav-item__title'>Credit Card Reviews</strong></a>
+<a href="http://dockyard.com/work/coachup" class="work-nav-item"><strong class='work-nav-item__title'>CoachUp</strong></a>
+<a href="http://dockyard.com/work/askthem" class="work-nav-item"><strong class='work-nav-item__title'>AskThem</strong></a>
+<a href="http://dockyard.com/work/beacon-hill-blitz" class="work-nav-item"><strong class='work-nav-item__title'>Beacon Hill Blitz</strong></a></nav></div><a class="extended-nav__item" href="http://dockyard.com/team">Our Team</a><a class="extended-nav__item" href="http://dockyard.com/process">Process</a><a class="extended-nav__item" href="http://dockyard.com/community">Community</a><a class="extended-nav__item active" href="/">Blog</a><a class="extended-nav__item" href="http://dockyard.com/hire-us">Hire Us</a></div></nav><nav class='work-nav'><h6>Selected Work</h6><a href="http://dockyard.com/work/credit-card-reviews" class="work-nav-item"><strong class='work-nav-item__title'>Credit Card Reviews</strong><p>Credit card advice from real people.</p></a>
+<a href="http://dockyard.com/work/coachup" class="work-nav-item"><strong class='work-nav-item__title'>CoachUp</strong><p>You should be training. Right now.</p></a>
+<a href="http://dockyard.com/work/askthem" class="work-nav-item"><strong class='work-nav-item__title'>AskThem</strong><p>Ask officials questions on city, state, and federal levels.</p></a>
+<a href="http://dockyard.com/work/beacon-hill-blitz" class="work-nav-item"><strong class='work-nav-item__title'>Beacon Hill Blitz</strong><p>How technology helped repeal the #TechTax.</p></a></nav></div></div><nav class='main-nav-wrap'><div class='main-nav l-wrap--wide'><h4 class='top-heading'> Ruby On Rails | javascript | jQuery | Web Development </h4></div></nav></header><div class='push--header'></div><div class='l-wrap--blog'><a href="/"><strong class='logo--blog'>Prashant Sahni</strong></a>
+<a href="/blog"><strong class='logo--blog__tagline'>Blog</strong></a><nav class='blog-nav'><a class="blog-nav__item " id="post-link" href="/blog">Posts</a><a class="blog-nav__item " id="category-link" href="/categories/">Categories</a><a class="blog-nav__item " id="author-link" href="/authors/">Authors</a></nav></div><div class='l-wrap--blog__post'><h1 class='post__title'>Thumbnail image fetcher for youtube and vimeo</h1><time class='post__date'>March 15<sup>th</sup>, 2012</time><div class='post__content'><p>
+
+If you want to show youtube or vimeo videos on your website, you can simplly get code to embed from the specfic video page or you can generate embed code for the video
+on the basis of url of the video.
+What if you want to have thumbnail images for the videos, useful if you want to make a video gallery, where each video in the gallery 
+is respresented by the small thumbnail image, Here is a script that can help you.
+
+</p>
+
+<p>
+  <h3>You tube</h3>
+  In as you know every video as an id attached in the url of every video 
+  for example: "http://www.youtube.com/watch?v=c_Q6bq3QTyk&feature=related".
+  So, In this youtube video url,  'c_Q6bq3QTyk' is the id of the video.
+  
+  Now if I want to fetch the image for this video, youtube provides me four images at following urls, The first one 0.jpg( first one ) is a full size image, others are thumbnail images
+
+    <a href='http://img.youtube.com/vi/YR12Z8f1Dh8/0.jpg' target='_blank'>http://img.youtube.com/vi/YR12Z8f1Dh8/0.jpg</a>
+    <a href='http://img.youtube.com/vi/YR12Z8f1Dh8/1.jpg' target='_blank'>http://img.youtube.com/vi/YR12Z8f1Dh8/1.jpg</a>
+    <a href='http://img.youtube.com/vi/YR12Z8f1Dh8/2.jpg' target='_blank'>http://img.youtube.com/vi/YR12Z8f1Dh8/2.jpg</a>
+    <a href='http://img.youtube.com/vi/YR12Z8f1Dh8/3.jpg' target='_blank'>http://img.youtube.com/vi/YR12Z8f1Dh8/3.jpg</a>
+</p>
+
+<p>
+  <h3>Vimeo</h3>
+  In case of vimeo, every video has a url like http://vimeo.com/34918047, where 34918047 is an id of the video.
+  Now what vimeo does it returns a json array which contains all the information about the video in key value pairs,
+  For example: http://vimeo.com/34918047 video has a corresponding api url pointing to http://vimeo.com/api/v2/video/34918047.json, 
+  that returns all the info about this video.
+  The response has a key 'thumbnail_small' which has url for for small thumbnail image.
+</p>
+
+<p>
+  Now the script
+</p>
+
+<!--
+Old one
+/youtube\.com\/watch\?v=([\w-]+)+&.+=(.+)/
+-->
+<div class="highlight ruby "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+25
+26
+27
+28
+29
+<strong>30</strong>
+31
+32
+33
+34
+35
+36
+37
+38
+39
+<strong>40</strong>
+41
+42
+43
+44
+45
+46
+47
+48
+49
+<strong>50</strong>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+<strong>60</strong>
+61
+62
+63
+64
+65
+66
+67
+68
+69
+<strong>70</strong>
+71
+72
+73
+74
+75
+76
+77
+78
+79
+<strong>80</strong>
+81
+82
+83
+84
+85
+86
+87
+88
+89
+<strong>90</strong>
+91
+92
+93
+94
+95
+96
+97
+98
+99
+<strong>100</strong>
+</pre></td>
+  <td class="code"><pre>
+
+<span class="comment">#######################################################</span>
+<span class="comment"># Thumbnail image fetcher for youtube or vimeo</span>
+<span class="comment">#######################################################</span>
+
+require <span class="string"><span class="delimiter">&quot;</span><span class="content">net/http</span><span class="delimiter">&quot;</span></span>
+require <span class="string"><span class="delimiter">&quot;</span><span class="content">uri</span><span class="delimiter">&quot;</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">rubygems</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">json</span><span class="delimiter">'</span></span>
+
+<span class="keyword">class</span> <span class="class">ImageFetcher</span>
+
+ <span class="constant">PROVIDERS</span> = { 
+                 <span class="string"><span class="delimiter">'</span><span class="content">youtube</span><span class="delimiter">'</span></span> =&gt; { 
+                                <span class="symbol">:api_url</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">http://img.youtube.com/vi/</span><span class="delimiter">'</span></span>, 
+                                <span class="symbol">:regex</span> =&gt; <span class="regexp"><span class="delimiter">/</span><span class="content">youtube</span><span class="char">\.</span><span class="content">com</span><span class="char">\/</span><span class="content">watch</span><span class="char">\?</span><span class="content">v=([^&amp;]+)</span><span class="delimiter">/</span></span>
+                              },
+                 <span class="string"><span class="delimiter">'</span><span class="content">vimeo</span><span class="delimiter">'</span></span>   =&gt; { 
+                                <span class="symbol">:api_url</span> =&gt;  <span class="string"><span class="delimiter">'</span><span class="content">http://vimeo.com/api/v2/video/</span><span class="delimiter">'</span></span>,
+                                <span class="symbol">:regex</span> =&gt; <span class="regexp"><span class="delimiter">/</span><span class="content">vimeo</span><span class="char">\.</span><span class="content">com</span><span class="char">\/</span><span class="content">(.+)</span><span class="delimiter">/</span></span>
+                              } 
+               }
+
+
+ <span class="constant">DIR_NAME</span> = <span class="string"><span class="delimiter">'</span><span class="content">images</span><span class="delimiter">'</span></span>
+ <span class="constant">YOUTUBE_THUMBNAIL_NO</span> = <span class="integer">1</span>
+ <span class="constant">NO_RESPONSE</span> = <span class="string"><span class="delimiter">'</span><span class="content">No response</span><span class="delimiter">'</span></span> 
+
+ <span class="keyword">def</span> <span class="function">initialize</span>(url)
+  <span class="instance-variable">@url</span> = url
+  <span class="instance-variable">@matched_video_type</span> = <span class="constant">PROVIDERS</span>.keys.find{ |k| <span class="instance-variable">@url</span>.match(k) }
+ <span class="keyword">end</span>
+
+ <span class="keyword">def</span> <span class="function">thumbnail</span>
+   <span class="instance-variable">@thumbnail</span> = fetch_thumbnail
+ <span class="keyword">end</span>
+
+
+<span class="comment">#--------------------------------------PRIVATE----------------------------------------------------------  </span>
+
+ private
+
+ <span class="keyword">def</span> <span class="function">fetch_thumbnail</span>
+   property = <span class="constant">PROVIDERS</span>[<span class="instance-variable">@matched_video_type</span>]
+   create_image_directory! <span class="keyword">unless</span> <span class="constant">File</span>.exists?(<span class="string"><span class="delimiter">'</span><span class="content">images</span><span class="delimiter">'</span></span>)
+   <span class="instance-variable">@url</span>.match(property[<span class="symbol">:regex</span>])
+   <span class="keyword">case</span> <span class="instance-variable">@matched_video_type</span>
+    <span class="keyword">when</span> <span class="string"><span class="delimiter">'</span><span class="content">youtube</span><span class="delimiter">'</span></span>
+      complete_api_url = property[<span class="symbol">:api_url</span>] + <span class="global-variable">$1</span> + <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> + <span class="constant">YOUTUBE_THUMBNAIL_NO</span>.to_s + <span class="string"><span class="delimiter">'</span><span class="content">.jpg</span><span class="delimiter">'</span></span>
+      puts <span class="string"><span class="delimiter">'</span><span class="content">=&gt; Fetching youtube video image with id </span><span class="delimiter">'</span></span> + <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">#{</span> <span class="global-variable">$1</span> <span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+      response = fetch_response(complete_api_url) 
+      <span class="keyword">if</span> response
+        file_to_save = <span class="constant">DIR_NAME</span> + <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> + <span class="global-variable">$1</span> + <span class="string"><span class="delimiter">'</span><span class="content">_</span><span class="delimiter">'</span></span> + <span class="constant">YOUTUBE_THUMBNAIL_NO</span>.to_s + <span class="string"><span class="delimiter">'</span><span class="content">_youtube.jpg</span><span class="delimiter">'</span></span>
+        save_image(<span class="symbol">:data</span> =&gt; response.body, <span class="symbol">:file_to_save</span> =&gt;  file_to_save)
+     <span class="keyword">else</span>
+      puts <span class="constant">NO_RESPONSE</span>
+     <span class="keyword">end</span>
+   <span class="keyword">when</span> <span class="string"><span class="delimiter">'</span><span class="content">vimeo</span><span class="delimiter">'</span></span>
+    complete_api_url = property[<span class="symbol">:api_url</span>] + <span class="global-variable">$1</span> + <span class="string"><span class="delimiter">'</span><span class="content">.json</span><span class="delimiter">'</span></span>
+    puts <span class="string"><span class="delimiter">'</span><span class="content">=&gt; Fetching vimeo video image with id </span><span class="delimiter">'</span></span> + <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">#{</span> <span class="global-variable">$1</span> <span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    response = fetch_response(complete_api_url) <span class="comment"># The returned response is JSON</span>
+    <span class="keyword">if</span> response
+      json           =  <span class="constant">JSON</span>.parse(response.body)
+      thumbnail_url  =  json[<span class="integer">0</span>][<span class="string"><span class="delimiter">&quot;</span><span class="content">thumbnail_small</span><span class="delimiter">&quot;</span></span>]
+      image_data     =  fetch_response(thumbnail_url)
+      file_to_save   =  <span class="constant">DIR_NAME</span> + <span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span> + <span class="global-variable">$1</span> + <span class="string"><span class="delimiter">'</span><span class="content">_</span><span class="delimiter">'</span></span> + <span class="string"><span class="delimiter">'</span><span class="content">small</span><span class="delimiter">'</span></span> + <span class="string"><span class="delimiter">'</span><span class="content">_vimeo.jpg</span><span class="delimiter">'</span></span>
+      save_image(<span class="symbol">:data</span> =&gt; image_data.body, <span class="symbol">:file_to_save</span> =&gt; file_to_save)
+    <span class="keyword">else</span>
+      puts <span class="constant">NO_RESPONSE</span>
+    <span class="keyword">end</span>
+   <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">=&gt; The video type is not supported</span><span class="delimiter">&quot;</span></span>  
+   <span class="keyword">end</span>
+ <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+  puts e.message
+ <span class="keyword">end</span>
+
+ <span class="keyword">def</span> <span class="function">create_image_directory!</span>
+   <span class="constant">Dir</span>.mkdir( <span class="constant">DIR_NAME</span> )
+ <span class="keyword">end</span>
+
+ <span class="keyword">def</span> <span class="function">fetch_response</span>(uri)
+   uri = <span class="constant">URI</span>.parse(uri)
+   response = <span class="constant">Net</span>::<span class="constant">HTTP</span>.get_response(uri)
+   response
+ <span class="keyword">end</span>
+
+ <span class="keyword">def</span> <span class="function">save_image</span>(options = {})
+   puts <span class="string"><span class="delimiter">&quot;</span><span class="content">=&gt; Saving image..</span><span class="delimiter">&quot;</span></span>
+   image_file = <span class="constant">File</span>.new( options[<span class="symbol">:file_to_save</span>], <span class="string"><span class="delimiter">'</span><span class="content">w</span><span class="delimiter">'</span></span> )
+   image_file.write( options[<span class="symbol">:data</span>] )
+ <span class="keyword">end</span>
+
+<span class="keyword">end</span>
+
+youtube = <span class="constant">ImageFetcher</span>.new(<span class="string"><span class="delimiter">'</span><span class="content">http://www.youtube.com/watch?v=zzQumRpqmDE&amp;feature=fvwrel</span><span class="delimiter">'</span></span>)
+youtube.thumbnail
+<span class="comment">#vimeo = ImageFetcher.new('http://vimeo.com/37102493')</span>
+<span class="comment">#vimeo.thumbnail</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>
+  Thanks for having a look. Please let me know if any enhancement or improvement.
+</p>
+</div><div class='post__share'><a class='twitter-share-button' data-url='http://prashantsahni.in//blog/2012/03/15/fetch-video-thumbail.html' data-via='_prashantsahni' href='https://twitter.com/share'>Tweet</a><script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='//platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');
+</script><div class='g-plusone' data-href='#' data-size='medium' data-width='100'></div><script>
+  (function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
+</script><span class='post__share--github'>If you see an issue, please send a <a href='https://github.com/psahni/psahni.github.io/tree/source/source/blog/posts', class='text-link post__issue', target: '_blank'>pull request</a> to contribute.</span></div><div class='related-posts-wrap'><div class='post__avatar-wrap'><img class='post__avatar' src='/assets/images/team/prashant-sahni-20e11efb.jpg'><h5 class='post__avatar__name'>Prashant Sahni</h5></div><div class='related-posts'><h3 class='related-posts__header headline--sub'>Other posts by Prashant</h3><a class="related-post" href="/blog/2014/12/25/ruby-script-to-upload-file-to-amazon-s3.html"><h2 class='related-post__title'>Ruby script to upload file to Amazon-S3</h2><p>December 25<sup>th</sup>, 2014</p></a>
+<a class="related-post" href="/blog/2014/09/28/mocking-apis-integration-testing-with-protractor.html"><h2 class='related-post__title'>Mocking Apis - Integration Testing with protractor in AngularJs</h2><p>September 28<sup>th</sup>, 2014</p></a>
+<a class="related-posts-link text-link" href="/blog">See all 14 posts by Prashant</a></div></div><p class='post__tags'><a class="post__tag" href="/categories/ruby.html">Ruby&nbsp;<span class='post__tag__count'>(4)</span></a></p><div id='disqus_thread'></div><script>
+  var disqus_shortname = 'psahni';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script><noscript>Please enable JavaScript to view the <a href='http://disqus.com/?ref_noscript'>comments powered by Disqus</a>.</noscript></noscript><a class='dsq-brlink' href='http://disqus.com'>comments powered by<span class='logo-disqus'>Disqus</span></a><script>
+  var path = window.location.pathname.split('/').reverse();
+  var postname = path[0].split('.');
+  var change = postname[0] + '.md';
+  var newpath = 'https://github.com/psahni/psahni.github.io/tree/source/source/blog/posts/' + path[3] + '-' + path[2] + '-' + path[1] + '-' + change
+  $('.post__issue').attr('href', newpath);
+</script></div><div class='push--footer'></div><footer><div class='l-wrap'><div class='l-footer-group'></div><div class='l-footer-group'><a href="/"><h3 class='footer-group__title'>BLOG</h3></a>
+<a class="footer__post" href="/blog/2014/12/25/ruby-script-to-upload-file-to-amazon-s3.html"><strong>Ruby script to upload file to Amazon-S3</strong><h6 class='footer-desc'></h6></a>
+<a class="footer__post" href="/blog/2014/09/28/mocking-apis-integration-testing-with-protractor.html"><strong>Mocking Apis - Integration Testing with protractor in AngularJs</strong><h6 class='footer-desc'></h6></a>
+<a class="footer__post" href="/blog/2014/06/21/parsing-xml-using-xpath-with-nokogiri-ruby.html"><strong>Parsing XML using XPATH with nokogiri ruby</strong><h6 class='footer-desc'></h6></a></div><div class='l-footer-group'><a href="http://dockyard.com/hire-us"></a><div class='social-links--footer'><a class="social-link" target="_blank" href="https://www.linkedin.com/profile/view?id=38142374"><span class='datalinkedin2icon'></span></a>
+<a class="social-link" target="_blank" href="https://github.com/psahni"><span class='datagithub4icon'></span></a>
+<a class="social-link" target="_blank" href="https://twitter.com/_prashantsahni"><span class='datatwitter2icon'></span></a>
+<a class="social-link" target="_blank" href="/atom.xml"><span class='datarssicon'></span></a></div></div></div></footer><script>
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'psahni'; // required: replace example with your forum shortname
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script></body></html>

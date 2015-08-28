@@ -1,0 +1,523 @@
+<!DOCTYPE html><html><head><title>Fancy Select Box</title><link href="../../../../assets/stylesheets/all-211194c3.css" media="screen" rel="stylesheet" type="text/css" /><script src="../../../../assets/javascripts/all-b36f1b0a.js" type="text/javascript"></script><meta content='NO-CACHE' http-equiv='CACHE-CONTROL'><meta content='Prashant Sahni is a Ruby on Rails developer bases in India' namer='description'><meta content='ruby on rails, rails, ruby, ruby on rails training, ruby application development, ruby on rails application development, ember application development, ember.js application development, software application development, web, web application development, mobile, mobile application development, ios, ios application development, iphone, iphone application development, android, android application development, postgres, startups, enterprise, Boston, MA, Massachusetts, for hire' name='keywords'><meta content='web development, mobile development, startups, enterprise, ruby on rails, rails, ruby, ruby on rails training, Boston, for hire' name='keywords'><meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'><meta charset='utf-8'><meta content='prashantsahni.in - ' name='description'><meta content='_prashantsahni' name='twitter:creator'><meta content='summary' name='twitter:card'><meta content='@_prashantsahni' name='twitter:site'><meta content='http://reefpoints.dockyard.com/blog/2013/03/02/fancy-select-box.html' name='twitter:url'><meta content='Fancy Select Box' name='twitter:title'><meta name='twitter:description'><link href='//cloud.typography.com/6496052/702882/css/fonts.css' rel='stylesheet' type='text/css'><link href='http://dockyard.com/humans.txt' rel='author'><link href='/favicon.png' rel='shortcut icon' type='image/x-icon'><link href='/favicon.png' rel='icon' type='image/x-icon'><link href='/apple-touch-icon.png' rel='apple-touch-icon'><link href='/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'><script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30027618-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<!--
+                                             ..
+                                           .O.
+                                       .:OO.
+                                      :OOO.
+                                    :OOO:.
+                         ...      :OOOO:
+                   ..ZOOOOOOOOO..OZ.O.
+                   OOOOOOOOOOOOOOOOI
+                  OOOOOOOOOOOOOOOOI,
+                 OOOOOOOO. .OOOOOOOO:
+                 OOOOOOOO   OOOOOOOOO:
+                OOOOOOOOOOOOOOOOOOOOO.
+                OOOOOOOOOOOOOOOOOOOOO:
+               .OOOOOOOOOOOOOOOOOOOOO:
+               .OOOOOOOOOOOOOOOOOOOOO.
+                OOOOOOOOOOOOOOOOOOOOO
+                OOOOOO?:   .OOOOOOOOO
+               .OOOOO      OOOOOOOOOO
+,OO ZO,        OOOOO,     OOOOOOOOOO+
+ OOOOO.        OOOOO     OOOOOOOOOOO+
+  OOO?        OOOOO     .OOOOOOOOOOO:
+   OOO,      OOOOO.    .OOOOOOOOOOOO
+    OOOOOOOOOOOOO.    .OOOOOOOOOOOO.
+     OOOOOOOOOOOO.  .OOOOOOOOOOOOO.
+      8OOOOOOOOOOOOOOOOOOOOOOOODO:
+         :OOOOOOOOOOOOOOOOOOOO::
+
+--></head><body class='blog blog_2013 blog_2013_03 blog_2013_03_02 blog_2013_03_02_fancy-select-box'><header><div class='extended-nav-wrap'><div class='l-wrap--wide'><nav class='extended-nav'><a class="extended-nav--logo" data-icon="⌂" href="http://dockyard.com/"><span class='is-hidden'>Home</span></a>
+<a class="extended-nav--close" data-icon="X" href="#"><span class='is-hidden'>Close</span></a><div class='extended-nav__items'><div class='extended-nav__items--mobile'><a class="extended-nav__item--work extended-nav__item" href="#">Work</a><nav class='work-nav--mobile'><a href="http://dockyard.com/work/credit-card-reviews" class="work-nav-item"><strong class='work-nav-item__title'>Credit Card Reviews</strong></a>
+<a href="http://dockyard.com/work/coachup" class="work-nav-item"><strong class='work-nav-item__title'>CoachUp</strong></a>
+<a href="http://dockyard.com/work/askthem" class="work-nav-item"><strong class='work-nav-item__title'>AskThem</strong></a>
+<a href="http://dockyard.com/work/beacon-hill-blitz" class="work-nav-item"><strong class='work-nav-item__title'>Beacon Hill Blitz</strong></a></nav></div><a class="extended-nav__item" href="http://dockyard.com/team">Our Team</a><a class="extended-nav__item" href="http://dockyard.com/process">Process</a><a class="extended-nav__item" href="http://dockyard.com/community">Community</a><a class="extended-nav__item active" href="/">Blog</a><a class="extended-nav__item" href="http://dockyard.com/hire-us">Hire Us</a></div></nav><nav class='work-nav'><h6>Selected Work</h6><a href="http://dockyard.com/work/credit-card-reviews" class="work-nav-item"><strong class='work-nav-item__title'>Credit Card Reviews</strong><p>Credit card advice from real people.</p></a>
+<a href="http://dockyard.com/work/coachup" class="work-nav-item"><strong class='work-nav-item__title'>CoachUp</strong><p>You should be training. Right now.</p></a>
+<a href="http://dockyard.com/work/askthem" class="work-nav-item"><strong class='work-nav-item__title'>AskThem</strong><p>Ask officials questions on city, state, and federal levels.</p></a>
+<a href="http://dockyard.com/work/beacon-hill-blitz" class="work-nav-item"><strong class='work-nav-item__title'>Beacon Hill Blitz</strong><p>How technology helped repeal the #TechTax.</p></a></nav></div></div><nav class='main-nav-wrap'><div class='main-nav l-wrap--wide'><h4 class='top-heading'> Ruby On Rails | javascript | jQuery | Web Development </h4></div></nav></header><div class='push--header'></div><div class='l-wrap--blog'><a href="/"><strong class='logo--blog'>Prashant Sahni</strong></a>
+<a href="/blog"><strong class='logo--blog__tagline'>Blog</strong></a><nav class='blog-nav'><a class="blog-nav__item " id="post-link" href="/blog">Posts</a><a class="blog-nav__item " id="category-link" href="/categories/">Categories</a><a class="blog-nav__item " id="author-link" href="/authors/">Authors</a></nav></div><div class='l-wrap--blog__post'><h1 class='post__title'>Fancy Select Box</h1><time class='post__date'>March 2<sup>nd</sup>, 2013</time><div class='post__content'><p>Often we use HTML select dropdown for providing choices to user depending upon the usecase.</p>
+
+<p>Like we have a code</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>  <span class="tag">&lt;select&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Red</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Red<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Yellow</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Yellow<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;option</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Green</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Green<span class="tag">&lt;/option&gt;</span>
+  <span class="tag">&lt;/select&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>This results into a normal select dropdown</p>
+
+<p><a><img src="http://i49.tinypic.com/etzaqu.jpg" border="0" alt="Image and video hosting by TinyPic" style="width:auto"></a></p>
+
+<p>Now a little bit of javascript and css will turn this normal dropdown into something fancy</p>
+
+<p><a><img src="http://i48.tinypic.com/dliash.png" border="0" alt="Image and video hosting by TinyPic" style="width:auto"></a></p>
+
+<h2>Usage</h2>
+
+<h4>Javscript</h4>
+
+<p>The fancy dropdown uses bootstrap downdown script.</p>
+
+<p>Download the script from <a href="http://twitter-bootstrap.node1.zygote.cc/javascript.html#dropdown" target="_blank">here</a></p>
+
+<p>If you are not familiar with Twitter Bootstrap, then please go through its javascript components <a href="http://twitter.github.com/bootstrap/javascript.html" target="_blank">here</a></p>
+
+<p>Here is the required the js that delivers the required output</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+</pre></td>
+  <td class="code"><pre>jQuery(<span class="keyword">function</span>(<span class="predefined">$</span>){
+    <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">select.dropdown</span><span class="delimiter">'</span></span>).each(<span class="keyword">function</span>(i, e){
+        <span class="keyword">if</span> (!(<span class="predefined">$</span>(e).data(<span class="string"><span class="delimiter">'</span><span class="content">convert</span><span class="delimiter">'</span></span>) == <span class="string"><span class="delimiter">'</span><span class="content">no</span><span class="delimiter">'</span></span>)) {
+            <span class="predefined">$</span>(e).hide().wrap(<span class="string"><span class="delimiter">'</span><span class="content">&lt;div class=&quot;btn-group&quot; id=&quot;select-group-</span><span class="delimiter">'</span></span> + i + <span class="string"><span class="delimiter">'</span><span class="content">&quot; /&gt;</span><span class="delimiter">'</span></span>);
+            <span class="keyword">var</span> select = <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#select-group-</span><span class="delimiter">'</span></span> + i);
+            <span class="keyword">var</span> current;
+            <span class="keyword">if</span>( <span class="predefined">$</span>(e).val().length ){
+                current = <span class="predefined">$</span>(e).find(<span class="string"><span class="delimiter">&quot;</span><span class="content">option:selected</span><span class="delimiter">&quot;</span></span>).text();
+            }
+            <span class="keyword">else</span>{
+                current = <span class="string"><span class="delimiter">&quot;</span><span class="content">Select</span><span class="delimiter">&quot;</span></span>
+            }
+            select.html(<span class="string"><span class="delimiter">'</span><span class="content">&lt;input type=&quot;hidden&quot; value=&quot;</span><span class="delimiter">'</span></span> + <span class="predefined">$</span>(e).val() + <span class="string"><span class="delimiter">'</span><span class="content">&quot; name=&quot;</span><span class="delimiter">'</span></span> + <span class="predefined">$</span>(e).attr(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content">&quot; id=&quot;</span><span class="delimiter">'</span></span> + <span class="predefined">$</span>(e).attr(<span class="string"><span class="delimiter">'</span><span class="content">id</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content">&quot; class=&quot;</span><span class="delimiter">'</span></span> + <span class="predefined">$</span>(e).attr(<span class="string"><span class="delimiter">'</span><span class="content">class</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content">&quot; /&gt;&lt;a class=&quot;btn&quot; href=&quot;javascript:;&quot;&gt;</span><span class="delimiter">'</span></span> + current + <span class="string"><span class="delimiter">'</span><span class="content">&lt;/a&gt;&lt;a class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; href=&quot;javascript:;&quot;&gt;&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;ul class=&quot;dropdown-menu&quot;&gt;&lt;/ul&gt;</span><span class="delimiter">'</span></span>);
+            <span class="predefined">$</span>(e).find(<span class="string"><span class="delimiter">'</span><span class="content">option</span><span class="delimiter">'</span></span>).each(<span class="keyword">function</span>(o,q) {
+                select.find(<span class="string"><span class="delimiter">'</span><span class="content">.dropdown-menu</span><span class="delimiter">'</span></span>).append(<span class="string"><span class="delimiter">'</span><span class="content">&lt;li&gt;&lt;a href=&quot;javascript:;&quot; data-value=&quot;</span><span class="delimiter">'</span></span> + <span class="predefined">$</span>(q).attr(<span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span>) + <span class="string"><span class="delimiter">'</span><span class="content">&quot;&gt;</span><span class="delimiter">'</span></span> + <span class="predefined">$</span>(q).text() + <span class="string"><span class="delimiter">'</span><span class="content">&lt;/a&gt;&lt;/li&gt;</span><span class="delimiter">'</span></span>);
+                <span class="keyword">if</span> (<span class="predefined">$</span>(q).attr(<span class="string"><span class="delimiter">'</span><span class="content">selected</span><span class="delimiter">'</span></span>)) select.find(<span class="string"><span class="delimiter">'</span><span class="content">.dropdown-menu li:eq(</span><span class="delimiter">'</span></span> + o + <span class="string"><span class="delimiter">'</span><span class="content">)</span><span class="delimiter">'</span></span>).click();
+            });
+            select.find(<span class="string"><span class="delimiter">'</span><span class="content">.dropdown-menu a</span><span class="delimiter">'</span></span>).click(<span class="keyword">function</span>() {
+                select.find(<span class="string"><span class="delimiter">'</span><span class="content">input[type=hidden]</span><span class="delimiter">'</span></span>).val(<span class="predefined">$</span>(<span class="local-variable">this</span>).data(<span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span>)).change();
+                select.find(<span class="string"><span class="delimiter">'</span><span class="content">.btn:eq(0)</span><span class="delimiter">'</span></span>).text(<span class="predefined">$</span>(<span class="local-variable">this</span>).text());
+            });
+        }
+    });
+});
+</pre></td>
+</tr></table>
+</div></div>
+<h4>CSS</h4>
+
+<p>We are going use  bootstrap css that is relevant to this fancy dropdown</p>
+
+<p>Here it is</p>
+<div class="highlight css "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+25
+26
+27
+28
+29
+<strong>30</strong>
+31
+32
+33
+34
+35
+36
+37
+38
+39
+<strong>40</strong>
+41
+42
+43
+44
+45
+46
+47
+48
+49
+<strong>50</strong>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+<strong>60</strong>
+61
+62
+63
+64
+65
+66
+67
+68
+69
+<strong>70</strong>
+71
+72
+73
+74
+75
+76
+77
+78
+79
+<strong>80</strong>
+81
+82
+83
+84
+85
+86
+87
+88
+89
+<strong>90</strong>
+91
+92
+93
+94
+95
+96
+97
+98
+99
+<strong>100</strong>
+101
+102
+103
+104
+105
+106
+107
+108
+109
+<strong>110</strong>
+111
+112
+113
+114
+115
+116
+117
+118
+119
+<strong>120</strong>
+121
+122
+123
+124
+125
+126
+127
+128
+129
+<strong>130</strong>
+131
+132
+133
+134
+135
+136
+137
+138
+139
+<strong>140</strong>
+141
+142
+143
+144
+145
+146
+147
+148
+149
+<strong>150</strong>
+151
+152
+153
+154
+155
+156
+157
+158
+159
+<strong>160</strong>
+161
+162
+163
+164
+165
+166
+167
+168
+169
+<strong>170</strong>
+</pre></td>
+  <td class="code"><pre><span class="tag">ul</span>, <span class="tag">ol</span>{
+  <span class="key">padding</span>: <span class="float">0</span>;
+  <span class="key">margin</span>: <span class="float">0</span> <span class="float">0</span> <span class="float">10px</span> <span class="float">25px</span>;
+}
+
+<span class="tag">li</span> {
+    <span class="key">line-height</span>: <span class="float">20px</span>;
+}
+
+<span class="tag">label</span> {
+    <span class="key">display</span>: <span class="value">block</span>;
+    <span class="key">margin-bottom</span>: <span class="float">5px</span>;
+}
+<span class="tag">label</span>, <span class="tag">input</span>, <span class="tag">button</span>, <span class="tag">select</span>, <span class="tag">textarea</span> {
+    <span class="key">font-size</span>: <span class="float">14px</span>;
+    <span class="key">font-weight</span>: <span class="value">normal</span>;
+    <span class="key">line-height</span>: <span class="float">20px</span>;
+}
+
+<span class="tag">select</span> {
+    <span class="key">width</span>: <span class="float">220px</span>;
+    <span class="key">background-color</span>: <span class="value">white</span>;
+    <span class="key">border</span>: <span class="float">1px</span> <span class="value">solid</span> <span class="color">#CCC</span>;
+}
+
+<span class="class">.btn-group</span> {
+    <span class="key">position</span>: <span class="value">relative</span>;
+    <span class="key">display</span>: <span class="value">inline-block</span>;
+    <span class="key">font-size</span>: <span class="float">0</span>;
+    <span class="key">white-space</span>: <span class="value">nowrap</span>;
+    <span class="key">vertical-align</span>: <span class="value">middle</span>;
+}
+<span class="class">.btn-group</span> &gt; <span class="class">.btn</span> {
+    <span class="key">position</span>: <span class="value">relative</span>;
+    <span class="key">-webkit-border-radius</span>: <span class="float">0</span>;
+    <span class="key">-moz-border-radius</span>: <span class="float">0</span>;
+    <span class="key">border-radius</span>: <span class="float">0</span>;
+}
+
+<span class="class">.btn-group</span> &gt; <span class="class">.btn</span>, <span class="class">.btn-group</span> &gt; <span class="class">.dropdown-menu</span>, <span class="class">.btn-group</span> &gt; <span class="class">.popover</span> {
+    <span class="key">font-size</span>: <span class="float">14px</span>;
+}
+
+<span class="class">.btn-group</span> &gt; <span class="class">.btn</span> + <span class="class">.dropdown-toggle</span> {
+    <span class="key">padding-right</span>: <span class="float">8px</span>;
+    <span class="key">padding-left</span>: <span class="float">8px</span>;
+    <span class="key">-webkit-box-shadow</span>: <span class="value">inset</span> <span class="float">1px</span> <span class="float">0</span> <span class="float">0</span> <span class="color">rgba(255, 255, 255, 0.125)</span>, <span class="value">inset</span> <span class="float">0</span> <span class="float">1px</span> <span class="float">0</span> <span class="color">rgba(255, 255, 255, 0.2)</span>, <span class="float">0</span> <span class="float">1px</span> <span class="float">2px</span> <span class="color">rgba(0, 0, 0, 0.05)</span>;
+    <span class="key">-moz-box-shadow</span>: <span class="value">inset</span> <span class="float">1px</span> <span class="float">0</span> <span class="float">0</span> <span class="color">rgba(255, 255, 255, 0.125)</span>, <span class="value">inset</span> <span class="float">0</span> <span class="float">1px</span> <span class="float">0</span> <span class="color">rgba(255, 255, 255, 0.2)</span>, <span class="float">0</span> <span class="float">1px</span> <span class="float">2px</span> <span class="color">rgba(0, 0, 0, 0.05)</span>;
+    <span class="key">box-shadow</span>: <span class="value">inset</span> <span class="float">1px</span> <span class="float">0</span> <span class="float">0</span> <span class="color">rgba(255, 255, 255, 0.125)</span>, <span class="value">inset</span> <span class="float">0</span> <span class="float">1px</span> <span class="float">0</span> <span class="color">rgba(255, 255, 255, 0.2)</span>, <span class="float">0</span> <span class="float">1px</span> <span class="float">2px</span> <span class="color">rgba(0, 0, 0, 0.05)</span>;
+}
+
+<span class="class">.btn-group</span> &gt; <span class="class">.btn</span> + <span class="class">.btn</span> {
+    <span class="key">margin-left</span>: <span class="float">-1px</span>;
+}
+
+<span class="class">.btn-group</span> &gt; <span class="class">.btn</span><span class="pseudo-class">:last-child</span>, <span class="class">.btn-group</span> &gt; <span class="class">.dropdown-toggle</span> {
+    <span class="key">-webkit-border-top-right-radius</span>: <span class="float">4px</span>;
+    <span class="key">border-top-right-radius</span>: <span class="float">4px</span>;
+    <span class="key">-webkit-border-bottom-right-radius</span>: <span class="float">4px</span>;
+    <span class="key">border-bottom-right-radius</span>: <span class="float">4px</span>;
+    <span class="key">-moz-border-radius-topright</span>: <span class="float">4px</span>;
+    <span class="key">-moz-border-radius-bottomright</span>: <span class="float">4px</span>;
+}
+
+<span class="class">.btn</span> {
+    <span class="key">border-color</span>: <span class="color">#C5C5C5</span>;
+    <span class="key">border-color</span>: <span class="color">rgba(0, 0, 0, 0.15)</span> <span class="color">rgba(0, 0, 0, 0.15)</span> <span class="color">rgba(0, 0, 0, 0.25)</span>;
+}
+
+<span class="class">.btn</span> <span class="class">.caret</span> {
+    <span class="key">margin-top</span>: <span class="float">8px</span>;
+    <span class="key">margin-left</span>: <span class="float">0</span>;
+}
+<span class="class">.caret</span> {
+    <span class="key">display</span>: <span class="value">inline-block</span>;
+    <span class="key">width</span>: <span class="float">0</span>;
+    <span class="key">height</span>: <span class="float">0</span>;
+    <span class="key">vertical-align</span>: <span class="value">top</span>;
+    <span class="key">border-top</span>: <span class="float">4px</span> <span class="value">solid</span> <span class="value">black</span>;
+    <span class="key">border-right</span>: <span class="float">4px</span> <span class="value">solid</span> <span class="value">transparent</span>;
+    <span class="key">border-left</span>: <span class="float">4px</span> <span class="value">solid</span> <span class="value">transparent</span>;
+    <span class="key">content</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>;
+}
+<span class="class">.open</span> &gt; <span class="class">.dropdown-menu</span> {
+    <span class="key">display</span>: <span class="value">block</span>;
+}
+
+<span class="class">.dropdown-menu</span> {
+    <span class="key">position</span>: <span class="value">absolute</span>;
+    <span class="key">top</span>: <span class="float">100%</span>;
+    <span class="key">left</span>: <span class="float">0</span>;
+    <span class="key">display</span>: <span class="value">none</span>;
+    <span class="key">float</span>: <span class="value">left</span>;
+    <span class="key">min-width</span>: <span class="float">160px</span>;
+    <span class="key">padding</span>: <span class="float">5px</span> <span class="float">0</span>;
+    <span class="key">margin</span>: <span class="float">2px</span> <span class="float">0</span> <span class="float">0</span>;
+    <span class="key">list-style</span>: <span class="value">none</span>;
+    <span class="key">background-color</span>: <span class="value">white</span>;
+    <span class="key">border</span>: <span class="float">1px</span> <span class="value">solid</span> <span class="color">#CCC</span>;
+    <span class="key">border</span>: <span class="float">1px</span> <span class="value">solid</span> <span class="color">rgba(0, 0, 0, 0.2)</span>;
+    <span class="key">-webkit-border-radius</span>: <span class="float">6px</span>;
+    <span class="key">-moz-border-radius</span>: <span class="float">6px</span>;
+    <span class="key">border-radius</span>: <span class="float">6px</span>;
+    <span class="key">-webkit-box-shadow</span>: <span class="float">0</span> <span class="float">5px</span> <span class="float">10px</span> <span class="color">rgba(0, 0, 0, 0.2)</span>;
+    <span class="key">-moz-box-shadow</span>: <span class="float">0</span> <span class="float">5px</span> <span class="float">10px</span> <span class="color">rgba(0, 0, 0, 0.2)</span>;
+    <span class="key">box-shadow</span>: <span class="float">0</span> <span class="float">5px</span> <span class="float">10px</span> <span class="color">rgba(0, 0, 0, 0.2)</span>;
+    <span class="key">-webkit-background-clip</span>: <span class="value">padding-box</span>;
+    <span class="key">-moz-background-clip</span>: <span class="value">padding</span>;
+    <span class="key">background-clip</span>: <span class="value">padding-box</span>;
+}
+
+<span class="class">.dropdown-menu</span> <span class="tag">li</span> &gt; <span class="tag">a</span><span class="pseudo-class">:hover</span>,
+<span class="class">.dropdown-menu</span> <span class="tag">li</span> &gt; <span class="tag">a</span><span class="pseudo-class">:focus</span>,
+<span class="class">.dropdown-submenu</span><span class="pseudo-class">:hover</span> &gt; <span class="tag">a</span> {
+    <span class="key">color</span>: <span class="color">#ffffff</span>;
+    <span class="key">text-decoration</span>: <span class="value">none</span>;
+    <span class="key">background-color</span>: <span class="color">#0081c2</span>;
+    <span class="key">background-image</span>: <span class="error">-</span><span class="error">m</span><span class="error">o</span><span class="error">z</span><span class="error">-</span><span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">top</span>, <span class="color">#0088cc</span>, <span class="color">#0077b3</span>);
+    <span class="key">background-image</span>: <span class="error">-</span><span class="error">w</span><span class="error">e</span><span class="error">b</span><span class="error">k</span><span class="error">i</span><span class="error">t</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">linear</span>, <span class="float">0</span> <span class="float">0</span>, <span class="float">0</span> <span class="float">100%</span>, <span class="error">f</span><span class="error">r</span><span class="error">o</span><span class="error">m</span>(<span class="color">#0088cc</span>), <span class="error">t</span><span class="error">o</span>(<span class="color">#0077b3</span>));
+    <span class="key">background-image</span>: <span class="error">-</span><span class="error">w</span><span class="error">e</span><span class="error">b</span><span class="error">k</span><span class="error">i</span><span class="error">t</span><span class="error">-</span><span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">top</span>, <span class="color">#0088cc</span>, <span class="color">#0077b3</span>);
+    <span class="key">background-image</span>: <span class="error">-</span><span class="error">o</span><span class="error">-</span><span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">top</span>, <span class="color">#0088cc</span>, <span class="color">#0077b3</span>);
+    <span class="key">background-image</span>: <span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">to</span> <span class="value">bottom</span>, <span class="color">#0088cc</span>, <span class="color">#0077b3</span>);
+    <span class="key">background-repeat</span>: <span class="value">repeat-x</span>;
+    <span class="key">filter</span>: <span class="value">progid</span>:<span class="value">DXImageTransform</span>.<span class="value">Microsoft</span>.<span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">startColorstr</span>=<span class="string"><span class="delimiter">'</span><span class="content">#ff0088cc</span><span class="delimiter">'</span></span>, <span class="value">endColorstr</span>=<span class="string"><span class="delimiter">'</span><span class="content">#ff0077b3</span><span class="delimiter">'</span></span>, <span class="value">GradientType</span>=<span class="float">0</span>);
+}
+<span class="class">.dropdown-menu</span> <span class="tag">li</span> &gt; <span class="tag">a</span> {
+    <span class="key">color</span>: <span class="color">#333333</span>;
+    <span class="key">padding</span>: <span class="float">3px</span> <span class="float">20px</span>;
+    <span class="key">clear</span>:<span class="value">both</span>;
+    <span class="key">display</span>: <span class="value">block</span>;
+}
+
+<span class="class">.btn</span> {
+    <span class="key">display</span>: <span class="value">inline-block</span>;
+    <span class="error">*</span><span class="key">display</span>: <span class="value">inline</span>;
+    <span class="key">padding</span>: <span class="float">4px</span> <span class="float">12px</span>;
+    <span class="key">margin-bottom</span>: <span class="float">0</span>;
+    <span class="error">*</span><span class="key">margin-left</span>: <span class="float">.3em</span>;
+    <span class="key">font-size</span>: <span class="float">14px</span>;
+    <span class="key">line-height</span>: <span class="float">20px</span>;
+    <span class="key">color</span>: <span class="color">#333333</span>;
+    <span class="key">text-align</span>: <span class="value">center</span>;
+    <span class="key">text-shadow</span>: <span class="float">0</span> <span class="float">1px</span> <span class="float">1px</span> <span class="color">rgba(255, 255, 255, 0.75)</span>;
+    <span class="key">vertical-align</span>: <span class="value">middle</span>;
+    <span class="key">cursor</span>: <span class="value">pointer</span>;
+    <span class="key">background-color</span>: <span class="color">#f5f5f5</span>;
+    <span class="error">*</span><span class="key">background-color</span>: <span class="color">#e6e6e6</span>;
+    <span class="key">background-image</span>: <span class="error">-</span><span class="error">m</span><span class="error">o</span><span class="error">z</span><span class="error">-</span><span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">top</span>, <span class="color">#ffffff</span>, <span class="color">#e6e6e6</span>);
+    <span class="key">background-image</span>: <span class="error">-</span><span class="error">w</span><span class="error">e</span><span class="error">b</span><span class="error">k</span><span class="error">i</span><span class="error">t</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">linear</span>, <span class="float">0</span> <span class="float">0</span>, <span class="float">0</span> <span class="float">100%</span>, <span class="error">f</span><span class="error">r</span><span class="error">o</span><span class="error">m</span>(<span class="color">#ffffff</span>), <span class="error">t</span><span class="error">o</span>(<span class="color">#e6e6e6</span>));
+    <span class="key">background-image</span>: <span class="error">-</span><span class="error">w</span><span class="error">e</span><span class="error">b</span><span class="error">k</span><span class="error">i</span><span class="error">t</span><span class="error">-</span><span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">top</span>, <span class="color">#ffffff</span>, <span class="color">#e6e6e6</span>);
+    <span class="key">background-image</span>: <span class="error">-</span><span class="error">o</span><span class="error">-</span><span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">top</span>, <span class="color">#ffffff</span>, <span class="color">#e6e6e6</span>);
+    <span class="key">background-image</span>: <span class="error">l</span><span class="error">i</span><span class="error">n</span><span class="error">e</span><span class="error">a</span><span class="error">r</span><span class="error">-</span><span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">to</span> <span class="value">bottom</span>, <span class="color">#ffffff</span>, <span class="color">#e6e6e6</span>);
+    <span class="key">background-repeat</span>: <span class="value">repeat-x</span>;
+    <span class="key">border</span>: <span class="float">1px</span> <span class="value">solid</span> <span class="color">#bbbbbb</span>;
+    <span class="error">*</span><span class="key">border</span>: <span class="float">0</span>;
+    <span class="key">border-color</span>: <span class="color">#e6e6e6</span> <span class="color">#e6e6e6</span> <span class="color">#bfbfbf</span>;
+    <span class="key">border-color</span>: <span class="color">rgba(0, 0, 0, 0.1)</span> <span class="color">rgba(0, 0, 0, 0.1)</span> <span class="color">rgba(0, 0, 0, 0.25)</span>;
+    <span class="key">border-bottom-color</span>: <span class="color">#a2a2a2</span>;
+    <span class="key">-webkit-border-radius</span>: <span class="float">4px</span>;
+    <span class="key">-moz-border-radius</span>: <span class="float">4px</span>;
+    <span class="key">border-radius</span>: <span class="float">4px</span>;
+    <span class="key">filter</span>: <span class="value">progid</span>:<span class="value">DXImageTransform</span>.<span class="value">Microsoft</span>.<span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">startColorstr</span>=<span class="string"><span class="delimiter">'</span><span class="content">#ffffffff</span><span class="delimiter">'</span></span>, <span class="value">endColorstr</span>=<span class="string"><span class="delimiter">'</span><span class="content">#ffe6e6e6</span><span class="delimiter">'</span></span>, <span class="value">GradientType</span>=<span class="float">0</span>);
+    <span class="key">filter</span>: <span class="value">progid</span>:<span class="value">DXImageTransform</span>.<span class="value">Microsoft</span>.<span class="error">g</span><span class="error">r</span><span class="error">a</span><span class="error">d</span><span class="error">i</span><span class="error">e</span><span class="error">n</span><span class="error">t</span>(<span class="value">enabled</span>=<span class="value">false</span>);
+    <span class="error">*</span><span class="key">zoom</span>: <span class="float">1</span>;
+    <span class="key">-webkit-box-shadow</span>: <span class="value">inset</span> <span class="float">0</span> <span class="float">1px</span> <span class="float">0</span> <span class="color">rgba(255, 255, 255, 0.2)</span>, <span class="float">0</span> <span class="float">1px</span> <span class="float">2px</span> <span class="color">rgba(0, 0, 0, 0.05)</span>;
+    <span class="key">-moz-box-shadow</span>: <span class="value">inset</span> <span class="float">0</span> <span class="float">1px</span> <span class="float">0</span> <span class="color">rgba(255, 255, 255, 0.2)</span>, <span class="float">0</span> <span class="float">1px</span> <span class="float">2px</span> <span class="color">rgba(0, 0, 0, 0.05)</span>;
+    <span class="key">box-shadow</span>: <span class="value">inset</span> <span class="float">0</span> <span class="float">1px</span> <span class="float">0</span> <span class="color">rgba(255, 255, 255, 0.2)</span>, <span class="float">0</span> <span class="float">1px</span> <span class="float">2px</span> <span class="color">rgba(0, 0, 0, 0.05)</span>;
+    <span class="key">height</span>: <span class="float">20px</span>;
+}
+
+</pre></td>
+</tr></table>
+</div></div></div><div class='post__share'><a class='twitter-share-button' data-url='http://prashantsahni.in//blog/2013/03/02/fancy-select-box.html' data-via='_prashantsahni' href='https://twitter.com/share'>Tweet</a><script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='//platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');
+</script><div class='g-plusone' data-href='#' data-size='medium' data-width='100'></div><script>
+  (function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
+</script><span class='post__share--github'>If you see an issue, please send a <a href='https://github.com/psahni/psahni.github.io/tree/source/source/blog/posts', class='text-link post__issue', target: '_blank'>pull request</a> to contribute.</span></div><div class='related-posts-wrap'><div class='post__avatar-wrap'><img class='post__avatar' src='/assets/images/team/prashant-sahni-20e11efb.jpg'><h5 class='post__avatar__name'>Prashant Sahni</h5></div><div class='related-posts'><h3 class='related-posts__header headline--sub'>Other posts by Prashant</h3><a class="related-post" href="/blog/2014/12/25/ruby-script-to-upload-file-to-amazon-s3.html"><h2 class='related-post__title'>Ruby script to upload file to Amazon-S3</h2><p>December 25<sup>th</sup>, 2014</p></a>
+<a class="related-post" href="/blog/2014/09/28/mocking-apis-integration-testing-with-protractor.html"><h2 class='related-post__title'>Mocking Apis - Integration Testing with protractor in AngularJs</h2><p>September 28<sup>th</sup>, 2014</p></a>
+<a class="related-posts-link text-link" href="/blog">See all 14 posts by Prashant</a></div></div><p class='post__tags'><a class="post__tag" href="/categories/jquery.html">jQuery&nbsp;<span class='post__tag__count'>(3)</span></a></p><div id='disqus_thread'></div><script>
+  var disqus_shortname = 'psahni';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script><noscript>Please enable JavaScript to view the <a href='http://disqus.com/?ref_noscript'>comments powered by Disqus</a>.</noscript></noscript><a class='dsq-brlink' href='http://disqus.com'>comments powered by<span class='logo-disqus'>Disqus</span></a><script>
+  var path = window.location.pathname.split('/').reverse();
+  var postname = path[0].split('.');
+  var change = postname[0] + '.md';
+  var newpath = 'https://github.com/psahni/psahni.github.io/tree/source/source/blog/posts/' + path[3] + '-' + path[2] + '-' + path[1] + '-' + change
+  $('.post__issue').attr('href', newpath);
+</script></div><div class='push--footer'></div><footer><div class='l-wrap'><div class='l-footer-group'></div><div class='l-footer-group'><a href="/"><h3 class='footer-group__title'>BLOG</h3></a>
+<a class="footer__post" href="/blog/2014/12/25/ruby-script-to-upload-file-to-amazon-s3.html"><strong>Ruby script to upload file to Amazon-S3</strong><h6 class='footer-desc'></h6></a>
+<a class="footer__post" href="/blog/2014/09/28/mocking-apis-integration-testing-with-protractor.html"><strong>Mocking Apis - Integration Testing with protractor in AngularJs</strong><h6 class='footer-desc'></h6></a>
+<a class="footer__post" href="/blog/2014/06/21/parsing-xml-using-xpath-with-nokogiri-ruby.html"><strong>Parsing XML using XPATH with nokogiri ruby</strong><h6 class='footer-desc'></h6></a></div><div class='l-footer-group'><a href="http://dockyard.com/hire-us"></a><div class='social-links--footer'><a class="social-link" target="_blank" href="https://www.linkedin.com/profile/view?id=38142374"><span class='datalinkedin2icon'></span></a>
+<a class="social-link" target="_blank" href="https://github.com/psahni"><span class='datagithub4icon'></span></a>
+<a class="social-link" target="_blank" href="https://twitter.com/_prashantsahni"><span class='datatwitter2icon'></span></a>
+<a class="social-link" target="_blank" href="/atom.xml"><span class='datarssicon'></span></a></div></div></div></footer><script>
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'psahni'; // required: replace example with your forum shortname
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script></body></html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html><html><head><title>On XSS & Rails</title><link href="../../../../assets/stylesheets/all-211194c3.css" media="screen" rel="stylesheet" type="text/css" /><script src="../../../../assets/javascripts/all-b36f1b0a.js" type="text/javascript"></script><meta content='NO-CACHE' http-equiv='CACHE-CONTROL'><meta content='Prashant Sahni is a Ruby on Rails developer bases in India' namer='description'><meta content='ruby on rails, rails, ruby, ruby on rails training, ruby application development, ruby on rails application development, ember application development, ember.js application development, software application development, web, web application development, mobile, mobile application development, ios, ios application development, iphone, iphone application development, android, android application development, postgres, startups, enterprise, Boston, MA, Massachusetts, for hire' name='keywords'><meta content='web development, mobile development, startups, enterprise, ruby on rails, rails, ruby, ruby on rails training, Boston, for hire' name='keywords'><meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'><meta charset='utf-8'><meta content='prashantsahni.in - ' name='description'><meta content='_prashantsahni' name='twitter:creator'><meta content='summary' name='twitter:card'><meta content='@_prashantsahni' name='twitter:site'><meta content='http://reefpoints.dockyard.com/blog/2010/07/02/xss.html' name='twitter:url'><meta content='On XSS &amp; Rails' name='twitter:title'><meta name='twitter:description'><link href='//cloud.typography.com/6496052/702882/css/fonts.css' rel='stylesheet' type='text/css'><link href='http://dockyard.com/humans.txt' rel='author'><link href='/favicon.png' rel='shortcut icon' type='image/x-icon'><link href='/favicon.png' rel='icon' type='image/x-icon'><link href='/apple-touch-icon.png' rel='apple-touch-icon'><link href='/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'><script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30027618-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<!--
+                                             ..
+                                           .O.
+                                       .:OO.
+                                      :OOO.
+                                    :OOO:.
+                         ...      :OOOO:
+                   ..ZOOOOOOOOO..OZ.O.
+                   OOOOOOOOOOOOOOOOI
+                  OOOOOOOOOOOOOOOOI,
+                 OOOOOOOO. .OOOOOOOO:
+                 OOOOOOOO   OOOOOOOOO:
+                OOOOOOOOOOOOOOOOOOOOO.
+                OOOOOOOOOOOOOOOOOOOOO:
+               .OOOOOOOOOOOOOOOOOOOOO:
+               .OOOOOOOOOOOOOOOOOOOOO.
+                OOOOOOOOOOOOOOOOOOOOO
+                OOOOOO?:   .OOOOOOOOO
+               .OOOOO      OOOOOOOOOO
+,OO ZO,        OOOOO,     OOOOOOOOOO+
+ OOOOO.        OOOOO     OOOOOOOOOOO+
+  OOO?        OOOOO     .OOOOOOOOOOO:
+   OOO,      OOOOO.    .OOOOOOOOOOOO
+    OOOOOOOOOOOOO.    .OOOOOOOOOOOO.
+     OOOOOOOOOOOO.  .OOOOOOOOOOOOO.
+      8OOOOOOOOOOOOOOOOOOOOOOOODO:
+         :OOOOOOOOOOOOOOOOOOOO::
+
+--></head><body class='blog blog_2010 blog_2010_07 blog_2010_07_02 blog_2010_07_02_xss'><header><div class='extended-nav-wrap'><div class='l-wrap--wide'><nav class='extended-nav'><a class="extended-nav--logo" data-icon="⌂" href="http://dockyard.com/"><span class='is-hidden'>Home</span></a>
+<a class="extended-nav--close" data-icon="X" href="#"><span class='is-hidden'>Close</span></a><div class='extended-nav__items'><div class='extended-nav__items--mobile'><a class="extended-nav__item--work extended-nav__item" href="#">Work</a><nav class='work-nav--mobile'><a href="http://dockyard.com/work/credit-card-reviews" class="work-nav-item"><strong class='work-nav-item__title'>Credit Card Reviews</strong></a>
+<a href="http://dockyard.com/work/coachup" class="work-nav-item"><strong class='work-nav-item__title'>CoachUp</strong></a>
+<a href="http://dockyard.com/work/askthem" class="work-nav-item"><strong class='work-nav-item__title'>AskThem</strong></a>
+<a href="http://dockyard.com/work/beacon-hill-blitz" class="work-nav-item"><strong class='work-nav-item__title'>Beacon Hill Blitz</strong></a></nav></div><a class="extended-nav__item" href="http://dockyard.com/team">Our Team</a><a class="extended-nav__item" href="http://dockyard.com/process">Process</a><a class="extended-nav__item" href="http://dockyard.com/community">Community</a><a class="extended-nav__item active" href="/">Blog</a><a class="extended-nav__item" href="http://dockyard.com/hire-us">Hire Us</a></div></nav><nav class='work-nav'><h6>Selected Work</h6><a href="http://dockyard.com/work/credit-card-reviews" class="work-nav-item"><strong class='work-nav-item__title'>Credit Card Reviews</strong><p>Credit card advice from real people.</p></a>
+<a href="http://dockyard.com/work/coachup" class="work-nav-item"><strong class='work-nav-item__title'>CoachUp</strong><p>You should be training. Right now.</p></a>
+<a href="http://dockyard.com/work/askthem" class="work-nav-item"><strong class='work-nav-item__title'>AskThem</strong><p>Ask officials questions on city, state, and federal levels.</p></a>
+<a href="http://dockyard.com/work/beacon-hill-blitz" class="work-nav-item"><strong class='work-nav-item__title'>Beacon Hill Blitz</strong><p>How technology helped repeal the #TechTax.</p></a></nav></div></div><nav class='main-nav-wrap'><div class='main-nav l-wrap--wide'><h4 class='top-heading'> Ruby On Rails | javascript | jQuery | Web Development </h4></div></nav></header><div class='push--header'></div><div class='l-wrap--blog'><a href="/"><strong class='logo--blog'>Prashant Sahni</strong></a>
+<a href="/blog"><strong class='logo--blog__tagline'>Blog</strong></a><nav class='blog-nav'><a class="blog-nav__item " id="post-link" href="/blog">Posts</a><a class="blog-nav__item " id="category-link" href="/categories/">Categories</a><a class="blog-nav__item " id="author-link" href="/authors/">Authors</a></nav></div><div class='l-wrap--blog__post'><h1 class='post__title'>On XSS & Rails</h1><time class='post__date'>July 2<sup>nd</sup>, 2010</time><div class='post__content'><p>Yesterday I was discussing about security in rails, the reach of web has been expanded so security in web apps can&#39;t be overlooked.</p>
+
+<p>I came to know some of the web issues
+<h3>Cross-Site scripting</h3>
+I have referred  it from <a href='http://edgeguides.rubyonrails.org/security.html' target='_blank'>Rails security guide</a>.
+Now a days we have so much user generated content on our websites for example posting comments , searching information on search engines(which we called Web 2.0 style apps)</p>
+
+<h3>Definition</h3>
+
+<p>In cross site scripting an attacker tries to inject a malicious script into the website, he is able to bypass the security mechanisms applied by the browser on the client site, because the malicious script that is inserted in the input come from  a trusted site(the browser treats the input as if it is the part of the target page.), so in this way the attacker is able to access the information like cookies or any other info of the true user can be accessed.</p>
+
+<h3>Prevention</h3>
+
+<p>The main issue is if we do not validate the input inserted by the user, then when our website tries to display that non-validated input, the malicious script runs in browser as a part of the website, so the input must be filtered before displaying it.
+If we do not allow user to enter any html data then prevention is easy. But it in some cases it is important.
+In Rails h() methods escapes all special html characters.
+eg, as you know it already</p>
+<div class="highlight ruby "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>&lt;<span class="string"><span class="delimiter">% </span><span class="content">for</span><span class="delimiter"> </span></span>comment <span class="keyword">in</span> <span class="instance-variable">@article</span>.comments <span class="string"><span class="delimiter">%&gt;</span><span class="content">
+  &lt;%=h comment %</span><span class="delimiter">&gt;</span></span>
+&lt;<span class="string"><span class="delimiter">% </span><span class="content">end</span><span class="delimiter"> </span></span>%&gt;
+
+</pre></td>
+</tr></table>
+</div></div>
+<p>It is a good approach to store the content in the original form that is unescaped.</p>
+
+<p>Of course things are not as simple, sometimes the filtering the input is even difficult .
+Rails provide more help there through sanitize() method, I referred it to bible of Rails <a href='railsbrain.com' target='_blank'>railsbrain</a>
+This method removed all javascript and form tags, this method is used just like h()
+We can use it in customised fashion,</p>
+<div class="highlight ruby "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>  &lt;<span class="string"><span class="delimiter">%=</span><span class="content"> sanitize @usert.bio, :tags </span><span class="delimiter">=</span></span>&gt; <span class="string"><span class="delimiter">%w(</span><span class="content">img</span><span class="delimiter">)</span></span>, <span class="symbol">:attributes</span> =&gt; <span class="string"><span class="delimiter">%w(</span><span class="content">id class style</span><span class="delimiter">)</span></span>%&gt;
+</pre></td>
+</tr></table>
+</div></div></div><div class='post__share'><a class='twitter-share-button' data-url='http://prashantsahni.in//blog/2010/07/02/xss.html' data-via='_prashantsahni' href='https://twitter.com/share'>Tweet</a><script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='//platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','twitter-wjs');
+</script><div class='g-plusone' data-href='#' data-size='medium' data-width='100'></div><script>
+  (function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
+</script><span class='post__share--github'>If you see an issue, please send a <a href='https://github.com/psahni/psahni.github.io/tree/source/source/blog/posts', class='text-link post__issue', target: '_blank'>pull request</a> to contribute.</span></div><div class='related-posts-wrap'><div class='post__avatar-wrap'><img class='post__avatar' src='/assets/images/team/prashant-sahni-20e11efb.jpg'><h5 class='post__avatar__name'>Prashant Sahni</h5></div><div class='related-posts'><h3 class='related-posts__header headline--sub'>Other posts by Prashant</h3><a class="related-post" href="/blog/2014/12/25/ruby-script-to-upload-file-to-amazon-s3.html"><h2 class='related-post__title'>Ruby script to upload file to Amazon-S3</h2><p>December 25<sup>th</sup>, 2014</p></a>
+<a class="related-post" href="/blog/2014/09/28/mocking-apis-integration-testing-with-protractor.html"><h2 class='related-post__title'>Mocking Apis - Integration Testing with protractor in AngularJs</h2><p>September 28<sup>th</sup>, 2014</p></a>
+<a class="related-posts-link text-link" href="/blog">See all 14 posts by Prashant</a></div></div><p class='post__tags'><a class="post__tag" href="/categories/jquery.html">jQuery&nbsp;<span class='post__tag__count'>(3)</span></a></p><div id='disqus_thread'></div><script>
+  var disqus_shortname = 'psahni';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script><noscript>Please enable JavaScript to view the <a href='http://disqus.com/?ref_noscript'>comments powered by Disqus</a>.</noscript></noscript><a class='dsq-brlink' href='http://disqus.com'>comments powered by<span class='logo-disqus'>Disqus</span></a><script>
+  var path = window.location.pathname.split('/').reverse();
+  var postname = path[0].split('.');
+  var change = postname[0] + '.md';
+  var newpath = 'https://github.com/psahni/psahni.github.io/tree/source/source/blog/posts/' + path[3] + '-' + path[2] + '-' + path[1] + '-' + change
+  $('.post__issue').attr('href', newpath);
+</script></div><div class='push--footer'></div><footer><div class='l-wrap'><div class='l-footer-group'></div><div class='l-footer-group'><a href="/"><h3 class='footer-group__title'>BLOG</h3></a>
+<a class="footer__post" href="/blog/2014/12/25/ruby-script-to-upload-file-to-amazon-s3.html"><strong>Ruby script to upload file to Amazon-S3</strong><h6 class='footer-desc'></h6></a>
+<a class="footer__post" href="/blog/2014/09/28/mocking-apis-integration-testing-with-protractor.html"><strong>Mocking Apis - Integration Testing with protractor in AngularJs</strong><h6 class='footer-desc'></h6></a>
+<a class="footer__post" href="/blog/2014/06/21/parsing-xml-using-xpath-with-nokogiri-ruby.html"><strong>Parsing XML using XPATH with nokogiri ruby</strong><h6 class='footer-desc'></h6></a></div><div class='l-footer-group'><a href="http://dockyard.com/hire-us"></a><div class='social-links--footer'><a class="social-link" target="_blank" href="https://www.linkedin.com/profile/view?id=38142374"><span class='datalinkedin2icon'></span></a>
+<a class="social-link" target="_blank" href="https://github.com/psahni"><span class='datagithub4icon'></span></a>
+<a class="social-link" target="_blank" href="https://twitter.com/_prashantsahni"><span class='datatwitter2icon'></span></a>
+<a class="social-link" target="_blank" href="/atom.xml"><span class='datarssicon'></span></a></div></div></div></footer><script>
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'psahni'; // required: replace example with your forum shortname
+  
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script></body></html>

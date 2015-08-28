@@ -1,0 +1,1 @@
+$(function(){var a;return a=$(window),a.scroll(function(){return a.scrollTop()>0?$(".main-nav-wrap").addClass("header-has-background"):$(".main-nav-wrap").removeClass("header-has-background")})});
