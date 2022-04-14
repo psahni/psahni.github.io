@@ -15,11 +15,10 @@ export default function Home() {
         <p className="description">
           Get started by editing 
               <code>
-              <script>
-                  function sayHello() {
-                    console.log('Prashant')
-                  }
-              </script>
+                    function sayHello() {
+                      console.log('Prashant')
+                    }
+
              </code>
         </p>
       </main>
