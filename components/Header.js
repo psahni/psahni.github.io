@@ -1,3 +1,13 @@
-export default function Header({ title }) {
-  return <h1 className="title">{title}</h1>
+import Link from 'next/link'
+
+export default function Header() {
+  return (
+    <header>
+      <div className='container'>
+        <Link href='/' passHref>
+          <h2>Dev Blog</h2>
+        </Link>
+      </div>
+    </header>
+  )
 }
