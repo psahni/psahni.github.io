@@ -4,6 +4,20 @@ import matter from 'gray-matter'
 import { marked } from 'marked'
 import Link from 'next/link'
 
+import ReactMarkdown from 'react-markdown'
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+
+const CodeBlock = ({ node, inline, className, children, ...props }) => {
+  const match = /language-(\w+)/.exec(className || '') 
+  return (
+    <SyntaxHighlighter
+      language={match[1]} 
+    >
+       {String(children).replace(/\n$/, '')}  
+    </SyntaxHighlighter>
+  )
+};
+
 export default function PostPage({
   frontmatter: { title, date, cover_image },
   slug,
@@ -19,7 +33,10 @@ export default function PostPage({
         <div className='post-date'>Posted on {date}</div>
         <img src={cover_image} alt='' />
         <div className='post-body'>
-          <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
+          <ReactMarkdown 
+            children={content}
+            components={{ code: CodeBlock }}
+          />
         </div>
       </div>
     </>

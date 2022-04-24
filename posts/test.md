@@ -10,3 +10,16 @@ excerpt: 'This is the excerpt'
 * Item 2
 
 Hello World
+
+```ruby
+  def test
+    print 'hello'
+  end
+```
+
+
+```javascript
+  function test() {
+    console.log('hello')
+}
+```
